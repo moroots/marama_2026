@@ -1,6 +1,6 @@
 # MARAMA 2026 — Python Tutorial for Air Quality Professionals
 
-Four hands-on sessions for the Mid-Atlantic regional air quality community.
+Four hands-on sessions for the Mid-Atlantic Regional Air Management Association (MARAMA) community.
 
 | # | Session | Status |
 |---|---------|--------|
