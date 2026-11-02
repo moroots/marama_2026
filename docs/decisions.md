@@ -13,3 +13,9 @@
 - **Session 1 stance:** *reading* Python is the priority skill (especially in the AI era): read, predict, run, modify, verify. Writing from scratch is secondary.
 - **Helpers:** two TAs/helpers during hands-on blocks.
 - **Compliance depth (Session 2) and Session 3 hero dataset:** delegated to research; see `docs/research-notes.md` for the recommendation.
+
+## Round 3 (2026-11-02)
+- **Session 3 episode:** June 2025. TEMPO continues, so it is safe to teach with.
+- **pyrsig prototype:** approved and run; AirNow, AQS, and TEMPO L3 all retrieve without credentials (see `research-notes.md`).
+- **AI-assistant mini-segment in Session 1:** keep. Attendees "should know."
+- **Audience lens:** design for what state/local agency staff and managers actually do; see `docs/audience-needs.md`.
