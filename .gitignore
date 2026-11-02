@@ -1,0 +1,10 @@
+# data & environments stay out of git
+data/raw/
+data/cache/
+*.nc
+*.hdf
+*.h5
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store
