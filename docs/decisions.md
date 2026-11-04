@@ -55,3 +55,12 @@ Based on a review of *Teaching Tech Together* (Wilson), Carpentries guidance, an
 - **Virtual-friendly:** "neighbor" prompts also say what to do in chat; four prompts are marked as live polls.
 - **Reading AI-written code:** an exercise where an AI-written completeness rule (`> 18`) is tested against ours (`>= 18`).
 - **Fewer colors:** blue (goal, why), orange (write, stretch), purple (discuss, poll), red (watch out).
+
+## Round 8: "Before the Course" restyled to match the notebook (2026-11-04)
+
+- `docs/before-the-course.md` is the single source. It reads as plain text on GitHub (GitHub strips styling) and builds to a styled page with `python docs/build_guide.py` (needs `pip install markdown`) -> `docs/before-the-course.html`. Same four box colors as the notebook, plus green for tips.
+- Attendee text (Part A) is clean of internal notes. All open items moved to a "Before you send" box at the top of Part B.
+- A7 now previews how the hands-on notebooks work (colors, locked predictions, tiered hints, checkpoints, polls, the two-emoji chat signal) for a room of about 30 plus 150 virtual, with two student helpers.
+- New "I'm joining virtually" path in A3. New Part B2 on staffing and helper roles.
+- A1 outcome 1 reworded to "raw monitor file to a regulatory answer" so it does not overpromise the ozone design value. Reconcile with the lesson plan.
+- Not done: Colab run-through, rendering check in a real browser or Outlook/Gmail.

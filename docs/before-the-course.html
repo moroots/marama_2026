@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Before the Course | MARAMA Python Tutorial 2026</title>
+<style>
+ body{font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.55;
+      max-width:820px;margin:0 auto;padding:16px;color:#1c1c1e;background:#fff}
+ table{border-collapse:collapse;width:100%;margin:12px 0}
+ th,td{border:1px solid #8886;padding:7px 10px;text-align:left;vertical-align:top}
+ th{background:rgba(47,128,237,.12)}
+ pre{background:#f4f6f8;border:1px solid #d8dde3;border-radius:8px;padding:12px;overflow-x:auto}
+ code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em}
+ :not(pre)>code{background:#f0f2f5;padding:1px 5px;border-radius:4px}
+ details{border:1px solid #8886;border-radius:8px;padding:8px 14px;margin:12px 0}
+ summary{cursor:pointer}
+ a{color:#1a6fd6}
+ @media (prefers-color-scheme:dark){
+  body{background:#16181c;color:#e6e8eb}
+  pre{background:#22262c;border-color:#3a3f47}
+  :not(pre)>code{background:#2a2f36}
+  a{color:#7ab7ff}
+ }
+</style></head><body>
+<h1 style="background:linear-gradient(135deg,#1f4e79,#2f80ed 55%,#56ccf2);color:#fff;padding:22px 28px;border-radius:14px;margin:30px 0 10px;font-size:1.8em">🐍 Before the Course</h1>
+<p><strong>MARAMA Python Tutorial Series, 2026</strong> · Four 90-minute sessions · You leave with analysis you can show your supervisor.</p>
+<p><em>Whether you have never typed a line of code or you live in R, this guide gets you ready in 15 minutes.</em></p>
+<div style="text-align:center;padding:8px 14px;margin:14px 0;border:1px dashed #8884;border-radius:8px">
+<p>🎯 <strong>Blue</strong>: the goal and why it matters · ✍️ <strong>Orange</strong>: your turn · 💬 <strong>Purple</strong>: talk about it · 💡 <strong>Green</strong>: tip · ⚠️ <strong>Red</strong>: watch out</p>
+</div>
+<p>This guide has three parts:</p>
+<ul>
+<li><strong>Part A is for you, the attendee.</strong> Fifteen minutes of preparation, then everything you might want to look up.</li>
+<li><strong>Part B is for MARAMA organizers:</strong> what to send, when, and what to arrange. <em>(Attendees can skip it.)</em></li>
+<li><strong>Part C is a short note you can forward to your supervisor.</strong></li>
+</ul>
+<p>The optional local Python install lives in the <strong>Appendix</strong>. You do not need it to take the course.</p>
+<hr />
+<h1 style="background:linear-gradient(135deg,#1f4e79,#2f80ed 55%,#56ccf2);color:#fff;padding:22px 28px;border-radius:14px;margin:30px 0 10px;font-size:1.8em">Part A. For attendees</h1>
+<h2 style="background:linear-gradient(90deg,#2f80ed,#56ccf2);color:#fff;padding:9px 18px;border-radius:10px;margin:28px 0 8px;font-size:1.25em">A1. What you will be able to do</h2>
+<div style="border-left:7px solid #2f80ed;background:rgba(47,128,237,.12);padding:6px 18px;margin:14px 0;border-radius:8px;line-height:1.5">
+<p><strong>🎯 The goal</strong></p>
+<p>You already know how to think about air quality data. This course gives you a tool that does the repetitive part for you, and lets you check other people's work, including work written by AI.</p>
+</div>
+<p>By the end of Session 4 you will be able to:</p>
+<ol>
+<li><strong>Take a raw monitor file to a regulatory answer yourself.</strong> Clean it, plot it, and test it against a standard, step by step, and explain the result to a colleague. <em>(Sessions 1 and 2)</em></li>
+<li><strong>Put TEMPO satellite NO₂ on a map next to ground monitors</strong> for a real episode, June 2025. <em>(Session 3)</em></li>
+<li><strong>Re-run a whole analysis with one command</strong> when new data arrives, instead of redoing it by hand. <em>(Session 4)</em></li>
+<li><strong>Read a Python script, including one an AI assistant wrote, and say what it does, what it will output, and whether it is right.</strong> <em>(every session)</em></li>
+</ol>
+<h3>What you take home</h3>
+<ul>
+<li>A notebook that analyzes real monitor data, built by <strong>you</strong>, that you can show your supervisor.</li>
+<li>A short "episode report" notebook: you pick a pollution episode, and the notebook pulls the data, maps it and summarizes it.</li>
+<li>A first draft of automating <strong>one task from your own job</strong> (see A6).</li>
+<li>A one-page cheat sheet and the solutions to every exercise.</li>
+</ul>
+<div style="border-left:7px solid #27ae60;background:rgba(39,174,96,.13);padding:6px 18px;margin:14px 0;border-radius:8px;line-height:1.5">
+<p><strong>💡 Why this course is different</strong></p>
+<p>You will not watch someone else's code scroll by. In every session you <strong>write real code on real data</strong>, you <strong>predict before you run</strong>, and you <strong>practice catching mistakes</strong>, the skill that matters most when AI writes a growing share of the code. Expect to say "wait, I did that?" at least once.</p>
+</div>
+<h2 style="background:linear-gradient(90deg,#2f80ed,#56ccf2);color:#fff;padding:9px 18px;border-radius:10px;margin:28px 0 8px;font-size:1.25em">A2. Your 15-minute preparation</h2>
+<p>Three things, in this order. Each one is short.</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Time</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>5 min</td>
+<td><strong>Open Colab and run one cell</strong> (A4). If this works, your setup is done.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>5 min</td>
+<td><strong>Try the read-and-predict warm-up</strong> (A5). It shows you the main skill we teach.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>5 min</td>
+<td><strong>Tell us about one real task</strong> from your job that you would like to speed up (A6).</td>
+</tr>
+</tbody>
+</table>
+<div style="border-left:7px solid #f2994a;background:rgba(242,153,74,.15);padding:6px 18px;margin:14px 0;border-radius:8px;line-height:1.5">
+<p><strong>✍️ That is all that is required.</strong></p>
+<p>Everything else in this guide is for reference, or optional. Done with all three? You are ready. Go get coffee.</p>
+</div>
+<h2 style="background:linear-gradient(90deg,#2f80ed,#56ccf2);color:#fff;padding:9px 18px;border-radius:10px;margin:28px 0 8px;font-size:1.25em">A3. Pick your path</h2>
+<p>You do not all start in the same place, and the course is built for that. Choose the row that sounds like you. You can change your mind at any time.</p>
+<table>
+<thead>
+<tr>
+<th>If you say...</th>
+<th>Your path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>"I've never written code."</strong></td>
+<td>You are who the course is built for. Do steps 1 to 3 above and skip the rest. In class, every exercise starts with a worked example you can copy from. Ask the helpers freely. Nobody is keeping score.</td>
+</tr>
+<tr>
+<td><strong>"I use Excel or R."</strong></td>
+<td>You already know the ideas: columns, filters, group-by, pivot tables, plots. The work is vocabulary. We will give you an Excel/R-to-Python translation table. To preview, try <a href="https://pandas.pydata.org/docs/user_guide/10min.html">10 minutes to pandas</a>.</td>
+</tr>
+<tr>
+<td><strong>"I already write some Python."</strong></td>
+<td>Every exercise has a ⭐ stretch task for you. Bring a harder real problem (A6). Please try the warm-up anyway: the course is about reading code carefully, which experienced coders often skip.</td>
+</tr>
+<tr>
+<td><strong>"I'm joining virtually."</strong></td>
+<td>You get the same course, and it is designed for you too. Questions, polls and "I'm stuck" signals all run through the chat (A7). Run steps 1 to 3 on the computer you will use that day.</td>
+</tr>
+</tbody>
+</table>
+<h2 style="background:linear-gradient(90deg,#2f80ed,#56ccf2);color:#fff;padding:9px 18px;border-radius:10px;margin:28px 0 8px;font-size:1.25em">A4. Step 1: Open Colab and run one cell</h2>
+<p><strong>Colab</strong> is a free Google service that runs Python notebooks in your browser. We use it for all four sessions. Nothing to install, and it works the same on Windows, Mac and Linux.</p>
+<p>You need a Google account (a personal one is fine), a current browser, and an internet connection.</p>
+<ol>
+<li>Go to <a href="https://colab.research.google.com">colab.research.google.com</a> and sign in.</li>
+<li>Choose <strong>File → New notebook</strong>.</li>
+<li>In the first cell, type <code>print("Hello, MARAMA")</code> and press <strong>Shift+Enter</strong>.</li>
+<li><code>Hello, MARAMA</code> should appear under the cell.</li>
+<li>In a new cell, run this and check that you see three version numbers:</li>
+</ol>
+<pre><code class="language-python">import numpy, pandas, matplotlib
+print(numpy.__version__, pandas.__version__, matplotlib.__version__)
+</code></pre>
+<div style="border-left:7px solid #2f80ed;background:rgba(47,128,237,.12);padding:6px 18px;margin:14px 0;border-radius:8px;line-height:1.5">
+<p><strong>🎯 See three version numbers? You are done with setup.</strong></p>
+<p>You have run Python. Everything from here is the fun part.</p>
+</div>
+<div style="border-left:7px solid #27ae60;background:rgba(39,174,96,.13);padding:6px 18px;margin:14px 0;border-radius:8px;line-height:1.5">
+<p><strong>💡 Four things to know about Colab</strong></p>
+<ul>
+<li>Each time you open a notebook, you get a <strong>fresh computer</strong>. Anything you installed disappears when the session ends. Our notebooks start with a setup cell that reinstalls what they need. <strong>Run it first, every time.</strong></li>
+<li>Colab can disconnect when idle. If it does, choose <strong>Runtime → Run all</strong>, or re-run the setup cell.</li>
+<li>Use <strong>File → Save a copy in Drive</strong> so your edits are kept.</li>
+<li><strong>If your organization blocks Google sign-in or Colab,</strong> tell us now (A9). We will help you with the local install in the Appendix, or pair you with a partner.</li>
+</ul>
+</div>
+<h2 style="background:linear-gradient(90deg,#2f80ed,#56ccf2);color:#fff;padding:9px 18px;border-radius:10px;margin:28px 0 8px;font-size:1.25em">A5. Step 2: Read and predict (5 minutes)</h2>
+<p>The main skill in this course is <strong>reading</strong> Python. Code is increasingly written by AI assistants, and the people who benefit most are the ones who can look at a script and tell whether it is right.</p>
+<p>Here is the method we use all the time: <strong>read → predict → run → change → check.</strong></p>
+<div style="border-left:7px solid #f2994a;background:rgba(242,153,74,.15);padding:6px 18px;margin:14px 0;border-radius:8px;line-height:1.5">
+<p><strong>✍️ Your turn: read this code. Do not run it yet.</strong></p>
+<p>The numbers are made-up hourly ozone readings, in parts per billion.</p>
+</div>
+<pre><code class="language-python">ozone_ppb = [38, 52, 61, 74, 69, 45]
+threshold_ppb = 60
+
+above = [x for x in ozone_ppb if x &gt; threshold_ppb]
+
+print(len(above), &quot;readings above the threshold&quot;)
+print(&quot;highest:&quot;, max(ozone_ppb))
+print(&quot;average:&quot;, sum(ozone_ppb) / len(ozone_ppb))
+</code></pre>
+<ol>
+<li><strong>Predict.</strong> Write down, on paper or in your head, what the three lines of output will be. A guess is fine. Being wrong is useful, because it shows you where your picture of the code differs from what the computer does.</li>
+<li><strong>Run it</strong> in a Colab cell. Compare with your prediction.</li>
+<li><strong>Change it.</strong> Before you run, predict what happens if you set <code>threshold_ppb = 70</code>. Then try it.</li>
+<li><strong>Check it.</strong> An AI assistant wrote this line to compute the average:</li>
+</ol>
+<pre><code class="language-python">print(&quot;average:&quot;, sum(ozone_ppb) / 5)
+</code></pre>
+<div style="border-left:7px solid #eb5757;background:rgba(235,87,87,.13);padding:6px 18px;margin:14px 0;border-radius:8px;line-height:1.5">
+<p><strong>⚠️ Spot the bug</strong></p>
+<p>It runs without any error. <strong>Is the number right? How would you find out?</strong> Think for a minute before you open the answers.</p>
+</div>
+<details>
+<summary><b>Answers (open after you have tried)</b></summary>
+<ul>
+<li><strong>Output:</strong> <code>3 readings above the threshold</code>, then <code>highest: 74</code>, then <code>average: 56.5</code>. The readings above 60 are 61, 74 and 69.</li>
+<li><strong>With a threshold of 70:</strong> only the 74 is above it, so you get <code>1 readings above the threshold</code>. (The grammar is off. That is a small thing you could fix. How?)</li>
+<li><strong>The bug:</strong> the list has <strong>six</strong> values, but the code divides by <code>5</code>. It prints <code>67.8</code>, not <code>56.5</code>. It looks plausible, runs without an error, and is wrong. Hard-coded numbers are a common failure in generated code. A hand calculation (339 ÷ 6 = 56.5) or <code>len()</code> is the fix.</li>
+</ul>
+<p>If you got most of it, good. If you did not, you are exactly where the course starts.</p>
+</details>
+<h2 style="background:linear-gradient(90deg,#2f80ed,#56ccf2);color:#fff;padding:9px 18px;border-radius:10px;margin:28px 0 8px;font-size:1.25em">A6. Step 3: Bring one real task</h2>
+<p>Adults learn fastest from their own problems. Before Session 1, think of <strong>one thing you do repeatedly</strong> that you wish were faster or less error-prone. Some examples from air quality work:</p>
+<ul>
+<li>Pulling monitor data and building the same summary table every month.</li>
+<li>Checking which monitors exceeded a level, and by how much.</li>
+<li>Making the same plot for a report again and again.</li>
+<li>Comparing this year's season with the last five.</li>
+<li>Taking the output of a model run and checking it against monitors.</li>
+</ul>
+<p>We will ask for it on the registration form or by email <strong style="background:#fff3b0;color:#222;padding:0 5px;border-radius:4px">[TBD: delivery]</strong>. One sentence is plenty: <em>"Every week I ___ in Excel, and it takes ___."</em> We will use these (anonymously) for examples and for discussion time, and in Session 4 you will start automating your own.</p>
+<div style="border-left:7px solid #eb5757;background:rgba(235,87,87,.13);padding:6px 18px;margin:14px 0;border-radius:8px;line-height:1.5">
+<p><strong>⚠️ Please do not bring sensitive or confidential data.</strong></p>
+<p>Describe the task. We will practice on public data such as AirNow and AQS, and you can apply the same steps to your own files later at work.</p>
+</div>
+<h2 style="background:linear-gradient(90deg,#2f80ed,#56ccf2);color:#fff;padding:9px 18px;border-radius:10px;margin:28px 0 8px;font-size:1.25em">A7. What a session looks like</h2>
+<p>Each session is 90 minutes, with about 30 of lecture, 30 of hands-on and 30 of buffer, discussion and catch-up. The room is about 30 people, joined by about 150 online. We keep that many people moving with a few habits.</p>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>About 30 min</td>
+<td><strong>Live coding.</strong> The instructor writes code on screen, makes mistakes, and fixes them. You follow along, or watch and type later. Both are fine. We stop often and ask you to predict what comes next.</td>
+</tr>
+<tr>
+<td>About 30 min</td>
+<td><strong>Hands-on.</strong> You work through a notebook in your own Colab. Helpers move around the room and watch the chat. Every exercise has a worked example, a ⭐ stretch version, and hints.</td>
+</tr>
+<tr>
+<td>About 30 min</td>
+<td><strong>Buffer, discussion and questions.</strong> Interrupting is welcome. This is where your real-world tasks come in.</td>
+</tr>
+</tbody>
+</table>
+<h3>How the hands-on notebooks work</h3>
+<p>Our notebooks look like this, so nothing surprises you:</p>
+<div style="border-left:7px solid #2f80ed;background:rgba(47,128,237,.12);padding:6px 18px;margin:14px 0;border-radius:8px;line-height:1.5">
+<p><strong>🎯 Blue: the goal.</strong> Each block opens by telling you what you will have at the end and why it matters.</p>
+</div>
+<div style="border-left:7px solid #f2994a;background:rgba(242,153,74,.15);padding:6px 18px;margin:14px 0;border-radius:8px;line-height:1.5">
+<p><strong>✍️ Orange: your turn.</strong> You write real code here: a line, a loop, a table. Every one follows a worked example, so you are never starting from a blank cell.</p>
+</div>
+<div style="border-left:7px solid #9b51e0;background:rgba(155,81,224,.13);padding:6px 18px;margin:14px 0;border-radius:8px;line-height:1.5">
+<p><strong>💬 Purple: talk about it.</strong> Turn to a neighbor, or answer in the chat if you are virtual. The instructor's take stays folded until you have talked.</p>
+</div>
+<div style="border-left:7px solid #eb5757;background:rgba(235,87,87,.13);padding:6px 18px;margin:14px 0;border-radius:8px;line-height:1.5">
+<p><strong>⚠️ Red: watch out.</strong> A common trap, flagged before you fall in.</p>
+</div>
+<p>And a few more things worth knowing:</p>
+<ul>
+<li><strong>Predictions are locked in.</strong> Before a result appears, you commit to a yes/no or A/B/C call. Then the notebook tells you how your call did. You never guess numbers, only reason about what the code will do.</li>
+<li><strong>Checks judge your result, not your wording.</strong> If your code gives the right answer, you get a ✅. If not, you get a nudge, and a hint that gets more specific each time you open the next one.</li>
+<li><strong>Checkpoints are built in.</strong> If you fall behind or something breaks, a checkpoint cell gives you a ready-made table so you can rejoin the next block. <strong>There is no shame in using one.</strong> Using it means you saw it was time to catch up, which is what experienced analysts do.</li>
+<li><strong>Polls.</strong> A few questions per session are live polls. If you are in the room, answer in the poll like everyone else.</li>
+<li><strong>Two chat signals.</strong> Type <strong>✅</strong> in the chat when you finish a block. Type <strong>❓</strong> when you are stuck or used a checkpoint. A helper watches for ❓ and comes to you. You never have to interrupt to ask for help.</li>
+<li><strong>Notebooks come with files.</strong> Each session notebook has a data file and a small helper file (<code>marama_helpers.py</code>) that does the behind-the-scenes work. You drag them into Colab (the 📁 folder icon on the left) before you start. The email with the notebook link says which files and exactly how. <strong style="background:#fff3b0;color:#222;padding:0 5px;border-radius:4px">[TBD: how files are delivered]</strong></li>
+<li><strong>Solutions are shared after each session</strong>, so you can fall behind in class and catch up later.</li>
+<li><strong>Setup help is built in.</strong> The first 15 minutes of Session 1 are for getting everyone working, with helpers beside you. Do the preparation anyway, because it makes this faster.</li>
+<li><strong>It is fine to get stuck.</strong> Reading an error message is part of the plan.</li>
+</ul>
+<h2 style="background:linear-gradient(90deg,#2f80ed,#56ccf2);color:#fff;padding:9px 18px;border-radius:10px;margin:28px 0 8px;font-size:1.25em">A8. Between sessions</h2>
+<p>Learning sticks when it is spread out. Between sessions you get a <strong>15-minute micro-task</strong>:</p>
+<ul>
+<li><strong>After Session 1:</strong> change one thing in an example and predict the result.</li>
+<li><strong>After Session 2:</strong> run the same analysis on a different monitor.</li>
+<li><strong>After Session 3:</strong> swap in a different pollutant or date.</li>
+<li><strong>After Session 4:</strong> apply the pipeline pattern to your own task from A6.</li>
+</ul>
+<p>These are optional and short. <strong style="background:#fff3b0;color:#222;padding:0 5px;border-radius:4px">[TBD: weekly gap between sessions. If the sessions are on consecutive days, this section changes.]</strong></p>
+<h2 style="background:linear-gradient(90deg,#2f80ed,#56ccf2);color:#fff;padding:9px 18px;border-radius:10px;margin:28px 0 8px;font-size:1.25em">A9. Logistics</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Dates and times</strong></td>
+<td><strong style="background:#fff3b0;color:#222;padding:0 5px;border-radius:4px">[TBD: Session 1–4 dates, start time and time zone]</strong></td>
+</tr>
+<tr>
+<td><strong>Location (in person)</strong></td>
+<td><strong style="background:#fff3b0;color:#222;padding:0 5px;border-radius:4px">[TBD]</strong></td>
+</tr>
+<tr>
+<td><strong>Virtual link</strong></td>
+<td><strong style="background:#fff3b0;color:#222;padding:0 5px;border-radius:4px">[TBD]</strong></td>
+</tr>
+<tr>
+<td><strong>Contact for help before the course</strong></td>
+<td><strong style="background:#fff3b0;color:#222;padding:0 5px;border-radius:4px">[TBD: name, email]</strong></td>
+</tr>
+<tr>
+<td><strong>Optional drop-in setup clinic</strong></td>
+<td><strong style="background:#fff3b0;color:#222;padding:0 5px;border-radius:4px">[TBD: date and time, virtual, before Session 1]</strong></td>
+</tr>
+<tr>
+<td><strong>During class</strong></td>
+<td>Ask a helper in the room, or put ❓ in the chat if you are virtual.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>What to bring:</strong> a laptop and charger. A second screen helps, so you can see the instructor and your notebook together, but you do not need one. If you join virtually, a second screen or a second device is the best upgrade you can make.</p>
+<p><strong>Before each session</strong> you will get an email with that session's notebook link. Open it and run the first cell to confirm it loads. <strong>After each session,</strong> solutions are shared <strong style="background:#fff3b0;color:#222;padding:0 5px;border-radius:4px">[TBD: where and how]</strong>.</p>
+<h2 style="background:linear-gradient(90deg,#2f80ed,#56ccf2);color:#fff;padding:9px 18px;border-radius:10px;margin:28px 0 8px;font-size:1.25em">A10. Resources</h2>
+<p>Optional. Don't try to do all of this.</p>
+<h3>If you want a head start (each is short)</h3>
+<table>
+<thead>
+<tr>
+<th>For</th>
+<th>Resource</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Before Session 1</td>
+<td>Google's <a href="https://colab.research.google.com/notebooks/basic_features_overview.ipynb">Overview of Colaboratory Features</a>: how cells and notebooks work</td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>Before Session 2</td>
+<td><a href="https://pandas.pydata.org/docs/user_guide/10min.html">10 minutes to pandas</a>: the data-table tool we use</td>
+<td>10 min</td>
+</tr>
+<tr>
+<td>Before Session 2</td>
+<td><a href="https://www.youtube.com/watch?v=ZyhVh-qRZPA">Python Pandas Tutorial (Part 1)</a> by Corey Schafer (video)</td>
+<td>About 30 min</td>
+</tr>
+<tr>
+<td>Before Session 3</td>
+<td><a href="https://xarray.dev">xarray</a> and <a href="https://scitools.org.uk/cartopy/docs/latest/">Cartopy</a> docs. Browse the gallery only, to see what is possible</td>
+<td>10 min</td>
+</tr>
+</tbody>
+</table>
+<h3>After the course, if you want to go deeper</h3>
+<ul>
+<li><a href="https://swcarpentry.github.io/python-novice-gapminder/">Programming with Python: Gapminder</a> (Software Carpentry): careful beginner lessons with exercises.</li>
+<li><a href="https://docs.python.org/3/tutorial/index.html">The Python Tutorial</a> (python.org): the official reference. Sections 3 to 5 cover most of what you will use.</li>
+<li>Long beginner videos on YouTube, if you prefer watching: freeCodeCamp's <a href="https://www.youtube.com/watch?v=rfscVS0vtbw">Learn Python – Full Course for Beginners</a> and <a href="https://www.youtube.com/watch?v=eWRfhZUzrAc">Python for Beginners – Full Course</a> (each about 4.5 hours). These are general Python, not air quality, so they work better after the course than before it.</li>
+</ul>
+<p><em>Links checked on 2026-11-04.</em></p>
+<h2 style="background:linear-gradient(90deg,#2f80ed,#56ccf2);color:#fff;padding:9px 18px;border-radius:10px;margin:28px 0 8px;font-size:1.25em">A11. If something goes wrong with Colab</h2>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>What to try</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Colab shows "Session crashed" or disconnected</td>
+<td><strong>Runtime → Restart session</strong>, then re-run the setup cell.</td>
+</tr>
+<tr>
+<td>A cell says <code>ModuleNotFoundError</code></td>
+<td>Run the notebook's first (setup) cell, then try again.</td>
+</tr>
+<tr>
+<td>You cannot sign in to Google, or Colab is blocked at work</td>
+<td>Tell us (A9). Use a personal computer, or the Appendix, or sit with a neighbor for the first session.</td>
+</tr>
+<tr>
+<td>Your work computer will not open Colab</td>
+<td>Same as above. A personal device works.</td>
+</tr>
+<tr>
+<td>Nothing here helps</td>
+<td>Email the contact in A9 with a screenshot. We would rather hear from you now than see you stuck in Session 1.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 style="background:linear-gradient(135deg,#1f4e79,#2f80ed 55%,#56ccf2);color:#fff;padding:22px 28px;border-radius:14px;margin:30px 0 10px;font-size:1.8em">Part B. For MARAMA organizers</h1>
+<p><em>Not for attendees. Send Part A (A1 to A11), Part C and the Appendix. Keep this part.</em></p>
+<div style="border-left:7px solid #eb5757;background:rgba(235,87,87,.13);padding:6px 18px;margin:14px 0;border-radius:8px;line-height:1.5">
+<p><strong>⚠️ Before you send: everything still open</strong></p>
+<p>Placeholders in the text are marked <strong style="background:#fff3b0;color:#222;padding:0 5px;border-radius:4px">[TBD]</strong>. Search for that word to find them.</p>
+<p><strong>Details only the instructor can fill in</strong>
+- Dates, start time and time zone for all four sessions (A9)
+- In-person location and virtual link (A9)
+- Help contact: name and email (A9)
+- Drop-in setup clinic date (A9)
+- How the registration answers are collected (A6)
+- How notebook files (data and <code>marama_helpers.py</code>) reach attendees (A7)
+- Where solutions are shared (A9)
+- The gap between sessions (A8). Consecutive days would change the micro-tasks.
+- Cost, for the supervisor note (Part C)</p>
+<p><strong>Things the course team still has to build</strong>
+- The setup notebook that ends with a first-win plot. The opener of the PM2.5 example notebook (<code>test/test_file_v3.ipynb</code>) could serve.
+- The four between-session micro-tasks (A8).
+- The one-page cheat sheet and the manager one-pager, "What to ask your analyst, and how to check AI-written code."
+- The episode-report notebook for Session 4. A1 promises it, so confirm it first.
+- The Excel/R translation table promised in A3.</p>
+<p><strong>Things to confirm against the lesson plan</strong>
+- A1 outcome 1 is written generally ("raw monitor file to a regulatory answer"). The lesson plan names the ozone design value, which it lists as a stretch.
+- Which session the example notebook belongs to. It is not Session 1.</p>
+</div>
+<h2 style="background:linear-gradient(90deg,#2f80ed,#56ccf2);color:#fff;padding:9px 18px;border-radius:10px;margin:28px 0 8px;font-size:1.25em">B1. What to send, and when</h2>
+<table>
+<thead>
+<tr>
+<th>When</th>
+<th>What</th>
+<th>To whom</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>About 3 weeks before Session 1</td>
+<td>Part A of this guide, the dates, times and links, and the registration form (B5)</td>
+<td>All registrants</td>
+</tr>
+<tr>
+<td>About 2 weeks before</td>
+<td>Part C (the supervisor note), as a separate short message</td>
+<td>Registrants, to forward</td>
+</tr>
+<tr>
+<td>About 1 week before</td>
+<td>Reminder: "Do the 15-minute preparation now." Include the drop-in setup clinic details and the help contact</td>
+<td>All registrants</td>
+</tr>
+<tr>
+<td>1 to 2 days before</td>
+<td>Session 1 notebook link, its files, and the first-win setup notebook</td>
+<td>All registrants</td>
+</tr>
+<tr>
+<td>After each session</td>
+<td>Solutions, the next notebook, and the micro-task</td>
+<td>All registrants</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Format.</strong> This guide builds to a styled web page (<code>docs/before-the-course.html</code>). Colors and boxes show best as an attached HTML file or a PDF printed from the browser. Many email programs strip styling from pasted HTML, so attach rather than paste. <strong style="background:#fff3b0;color:#222;padding:0 5px;border-radius:4px">[TBD: confirm delivery channel.]</strong></p>
+<h2 style="background:linear-gradient(90deg,#2f80ed,#56ccf2);color:#fff;padding:9px 18px;border-radius:10px;margin:28px 0 8px;font-size:1.25em">B2. Staffing for about 180 people</h2>
+<p>The room has about 30 people and about 150 attend online. The staff is the instructor and <strong>two student helpers</strong>. Community practice for online teaching is about one helper per five participants, so this ratio is far thinner. The notebooks are therefore built to be <strong>mostly self-service</strong>:</p>
+<ul>
+<li><strong>Tiered hints</strong> that get more specific each time, so most stuck moments end without a human.</li>
+<li><strong>Checkpoint cells</strong> so no one is ever stranded.</li>
+<li><strong>A two-emoji chat signal</strong>: ✅ means finished, ❓ means stuck or used a checkpoint. Helpers watch the chat for ❓ and ignore the rest.</li>
+<li><strong>Live polls</strong> for the four or so yes/no or A/B/C calls in each notebook, so the instructor sees the room's thinking at a glance. The polls are set up in the meeting tool, not in the notebook.</li>
+</ul>
+<p><strong>Suggested roles for the two helpers.</strong> One watches the chat for ❓ and answers in writing. One walks the room and handles in-person questions. The instructor teaches, and does not field individual problems during the hands-on block. Both helpers should do the A4 check, the A5 warm-up and the example notebook beforehand, so they have seen what attendees will see.</p>
+<h2 style="background:linear-gradient(90deg,#2f80ed,#56ccf2);color:#fff;padding:9px 18px;border-radius:10px;margin:28px 0 8px;font-size:1.25em">B3. What the instructor needs from you</h2>
+<ul>
+<li><strong>Registration list</strong> with emails, an in-person or virtual flag, and answers to the form in B5.</li>
+<li><strong>A room</strong> with reliable Wi-Fi sized for the whole group using it at once.</li>
+<li><strong>Power strips.</strong> Laptops will be open for 90 minutes.</li>
+<li><strong>A projector or large display.</strong> For virtual attendees, a meeting platform with screen sharing, chat and polls. <strong style="background:#fff3b0;color:#222;padding:0 5px;border-radius:4px">[TBD]</strong></li>
+<li><strong>Two helpers</strong> present during every hands-on block (B2).</li>
+<li><strong>A contact person</strong> for setup questions before the course. <strong style="background:#fff3b0;color:#222;padding:0 5px;border-radius:4px">[TBD]</strong></li>
+<li><strong>15 minutes at the start of Session 1 for setup help.</strong> The first session's agenda should show it. The people who struggle most with installation are also the least likely to come to an optional help session, so setup help has to be part of the class itself.</li>
+<li><strong>An optional drop-in clinic</strong> the week before. <strong style="background:#fff3b0;color:#222;padding:0 5px;border-radius:4px">[TBD]</strong> Offer it, but don't depend on it.</li>
+</ul>
+<h2 style="background:linear-gradient(90deg,#2f80ed,#56ccf2);color:#fff;padding:9px 18px;border-radius:10px;margin:28px 0 8px;font-size:1.25em">B4. Expected problems, from most to least likely</h2>
+<ol>
+<li><strong>Work computers that block software.</strong> Colab is the main route for this reason.</li>
+<li><strong>Organizations that block Google sign-in or Colab.</strong> Find these out early with the form.</li>
+<li><strong>Attendees who arrive without doing the preparation.</strong> The 15-minute setup block in Session 1 handles this.</li>
+<li><strong>Uploading the data and helper file to Colab.</strong> Expect this to be the most common stuck point in a notebook session. Show it once on screen, and put a one-line reminder in the notebook email.</li>
+<li><strong>Shared Wi-Fi limits.</strong> Small bundled data is the mitigation.</li>
+<li><strong>Windows PATH problems</strong> for anyone doing the local install (Appendix).</li>
+</ol>
+<h2 style="background:linear-gradient(90deg,#2f80ed,#56ccf2);color:#fff;padding:9px 18px;border-radius:10px;margin:28px 0 8px;font-size:1.25em">B5. Registration form questions</h2>
+<ol>
+<li>Can you sign in to a Google account and open colab.research.google.com on the computer you will bring? (Yes / No / Not sure)</li>
+<li>Which sounds most like you? (I have never written code / I use Excel or R / I already write some Python)</li>
+<li>Will you attend in person or virtually?</li>
+<li><strong>What is one task you do repeatedly that you wish were faster?</strong> (One sentence. Please don't include confidential details.)</li>
+<li>Is there anything we should know to make the sessions work for you?</li>
+</ol>
+<h2 style="background:linear-gradient(90deg,#2f80ed,#56ccf2);color:#fff;padding:9px 18px;border-radius:10px;margin:28px 0 8px;font-size:1.25em">B6. Still to verify</h2>
+<ul>
+<li><strong>Colab.</strong> Nothing in this guide or in the example notebook has been run in Colab yet. Run A4, A5 and the example notebook there once, including the file upload.</li>
+<li><strong>Colab's Python version</strong> on the day. Attendees cannot choose it, and <code>pyrsig</code> is vetted only on 3.12.</li>
+<li><strong>The A5 warm-up</strong> was run locally and the outputs match the answers.</li>
+<li><strong>The local install steps</strong> (Appendix) were written from official documentation and have not been run on Windows, Mac and Linux.</li>
+<li><strong>Rendering.</strong> The styled HTML has not been viewed in Outlook or Gmail. Open the file in a browser and print a PDF to check it.</li>
+<li><strong>Regulatory numbers</strong> used in the notebooks (24-hour PM2.5 standard of 35 µg/m³, annual standard of 9.0 µg/m³) should be re-checked against current EPA pages before the course.</li>
+</ul>
+<hr />
+<h1 style="background:linear-gradient(135deg,#1f4e79,#2f80ed 55%,#56ccf2);color:#fff;padding:22px 28px;border-radius:14px;margin:30px 0 10px;font-size:1.8em">Part C. A note for supervisors</h1>
+<p><em>(Attendees can forward this. Edit freely.)</em></p>
+<p><strong>Subject: Why I'd like to attend the MARAMA Python tutorial series</strong></p>
+<p>I'd like to attend four 90-minute sessions run by Dr. Maurice Roots for MARAMA. The course teaches Python for air quality work, aimed at staff who use Excel or R and have not written Python.</p>
+<p>It matters for our work because analyses that take hours by hand can be repeated automatically each time data arrives, and because more of the code we receive is now written by AI. The course trains people to read and check that code, not only write it.</p>
+<p>By the end I should be able to compute an ozone design value from monitor data, map satellite NO₂ next to ground monitors for a real episode, and rerun an analysis with one command. I will bring back a short episode-report notebook and a first draft of automating one of my own recurring tasks.</p>
+<p>Time commitment: four 90-minute sessions <strong style="background:#fff3b0;color:#222;padding:0 5px;border-radius:4px">[TBD dates]</strong>, plus about 15 minutes of preparation and a short optional task between sessions. Cost: <strong style="background:#fff3b0;color:#222;padding:0 5px;border-radius:4px">[TBD]</strong>.</p>
+<hr />
+<h1 style="background:linear-gradient(135deg,#1f4e79,#2f80ed 55%,#56ccf2);color:#fff;padding:22px 28px;border-radius:14px;margin:30px 0 10px;font-size:1.8em">Appendix. Optional: run Python on your own computer</h1>
+<p>Do this only if you want to work offline, if Colab is blocked for you, or if you want to keep using Python after the course. <strong>It is not needed for the course.</strong> Pick <strong>one</strong> method. If you are unsure, use <strong>Method 1 (Miniconda)</strong>.</p>
+<h3>What you are installing</h3>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>What it is for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>numpy</code>, <code>pandas</code></td>
+<td>numbers and data tables</td>
+</tr>
+<tr>
+<td><code>matplotlib</code></td>
+<td>plots</td>
+</tr>
+<tr>
+<td><code>scipy</code></td>
+<td>statistics</td>
+</tr>
+<tr>
+<td><code>xarray</code>, <code>netCDF4</code></td>
+<td>gridded data such as satellite and model files</td>
+</tr>
+<tr>
+<td><code>cartopy</code></td>
+<td>maps</td>
+</tr>
+<tr>
+<td><code>pyrsig</code></td>
+<td>downloading EPA RSIG data (AirNow, AQS, TEMPO)</td>
+</tr>
+<tr>
+<td><code>atmoz</code></td>
+<td>atmospheric science tools used in Session 3</td>
+</tr>
+<tr>
+<td><code>jupyterlab</code></td>
+<td>the notebook interface</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Python version: use 3.12.</strong> The course supports <strong>Python 3.11 and 3.12 only</strong>. Python 3.10 and older are deprecated. Do not use 3.13 or newer. <code>pyrsig</code>, the package that downloads EPA data, has only been vetted on <strong>3.12</strong>, so that is the version we recommend and test. Use 3.11 only if you already have it and cannot change it.</p>
+<p><strong>Check which Python you have:</strong> run <code>python --version</code> (or <code>python3 --version</code>). If it shows anything other than 3.11 or 3.12, the steps below install 3.12 inside a separate environment. They do not change your existing Python.</p>
+<blockquote>
+<p><strong>Windows tip:</strong> after installing, use <strong>Anaconda Prompt</strong> (Method 1) or <strong>PowerShell</strong> (Methods 2 and 3). On Mac and Linux, use <strong>Terminal</strong>.</p>
+</blockquote>
+<h3>Method 1 (recommended): Miniconda</h3>
+<p>Miniconda installs Python and a package manager called <code>conda</code>. It handles the hard-to-install map and satellite-data packages well.</p>
+<ol>
+<li>Download and install Miniconda from the official guide: <a href="https://www.anaconda.com/docs/getting-started/miniconda/install/overview">Miniconda installation</a>. Use the graphical installer unless you are comfortable with a terminal.</li>
+<li>Open <strong>Anaconda Prompt</strong> (Windows) or <strong>Terminal</strong> (Mac/Linux).</li>
+<li>Create an environment for the course. An environment is a separate folder of packages, so nothing you do here can break other software.</li>
+</ol>
+<pre><code class="language-bash">conda create -n marama python=3.12
+conda activate marama
+</code></pre>
+<ol start="4">
+<li>Install the packages.</li>
+</ol>
+<pre><code class="language-bash">conda install -c conda-forge numpy &quot;pandas&lt;3&quot; matplotlib scipy xarray netcdf4 cartopy jupyterlab git
+pip install pyrsig
+pip install git+https://github.com/moroots/atmoz
+</code></pre>
+<p><code>pyrsig</code> currently needs <code>pandas&lt;3</code>, which is why the version is limited. <code>git</code> is in the first command because the <code>atmoz</code> install pulls code from GitHub.</p>
+<ol start="5">
+<li>Start the notebook interface with <code>jupyter lab</code>. Your browser opens. Create a new Python notebook and run the check in the last section of this appendix.</li>
+</ol>
+<p><strong>Next time:</strong> open Anaconda Prompt or Terminal, run <code>conda activate marama</code>, then <code>jupyter lab</code>.</p>
+<p>Official references: <a href="https://docs.conda.io/projects/conda/en/stable/user-guide/getting-started.html">conda getting started</a>, <a href="https://docs.conda.io/projects/miniconda">Miniconda installers</a>.</p>
+<h3>Method 2: uv</h3>
+<p><code>uv</code> is a newer, very fast tool that installs Python and packages. It suits you if you are comfortable with a terminal. If <code>cartopy</code> fails to install, use Method 1.</p>
+<ol>
+<li>Install <code>uv</code> from the <a href="https://docs.astral.sh/uv/getting-started/installation/">official installation page</a>. Close and reopen your terminal afterward.
+   - <strong>Mac / Linux:</strong> <code>curl -LsSf https://astral.sh/uv/install.sh | sh</code>
+   - <strong>Windows (PowerShell):</strong> <code>powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"</code></li>
+<li>Create a project folder and environment.</li>
+</ol>
+<pre><code class="language-bash">mkdir marama &amp;&amp; cd marama
+uv venv --python 3.12
+</code></pre>
+<ol start="3">
+<li>Activate it.
+   - <strong>Mac / Linux:</strong> <code>source .venv/bin/activate</code>
+   - <strong>Windows (PowerShell):</strong> <code>.venv\Scripts\Activate.ps1</code></li>
+<li>Install the packages. You need <strong>Git</strong> for the <code>atmoz</code> line (<a href="https://git-scm.com/downloads">git-scm.com</a>).</li>
+</ol>
+<pre><code class="language-bash">uv pip install numpy &quot;pandas&lt;3&quot; matplotlib scipy xarray netcdf4 cartopy pyrsig jupyterlab
+uv pip install git+https://github.com/moroots/atmoz
+</code></pre>
+<ol start="5">
+<li>Start the notebook interface: <code>jupyter lab</code></li>
+</ol>
+<h3>Method 3: Python's standard tools (<code>venv</code> and <code>pip</code>)</h3>
+<p>This uses only what comes with Python. It is the most universal and the most manual.</p>
+<ol>
+<li>Install <strong>Python 3.12</strong> from <a href="https://www.python.org/downloads/">python.org/downloads</a> (choose a 3.12.x release, not the newest version on the front page). <strong>On Windows, tick "Add python.exe to PATH" on the first screen of the installer.</strong> Install <a href="https://git-scm.com/downloads">Git</a> too.</li>
+<li>Create an environment. On some Mac/Linux systems the command is <code>python3</code>.</li>
+</ol>
+<pre><code class="language-bash">python -m venv marama-env
+</code></pre>
+<ol start="3">
+<li>Activate it.
+   - <strong>Mac / Linux:</strong> <code>source marama-env/bin/activate</code>
+   - <strong>Windows (PowerShell):</strong> <code>marama-env\Scripts\Activate.ps1</code>
+   - If Windows blocks the script, run <code>Set-ExecutionPolicy -Scope Process RemoteSigned</code> and try again.</li>
+<li>Install the packages.</li>
+</ol>
+<pre><code class="language-bash">python -m pip install --upgrade pip
+python -m pip install numpy &quot;pandas&lt;3&quot; matplotlib scipy xarray netcdf4 cartopy pyrsig jupyterlab
+python -m pip install git+https://github.com/moroots/atmoz
+</code></pre>
+<ol start="5">
+<li>Start the notebook interface: <code>jupyter lab</code></li>
+</ol>
+<p>Official reference: <a href="https://docs.python.org/3/tutorial/venv.html">Python Tutorial: Virtual Environments and Packages</a>.</p>
+<h3>Check that everything works</h3>
+<p>Paste this into a notebook cell and run it. In Colab, first run <code>!pip install pyrsig git+https://github.com/moroots/atmoz</code> on its own, then run the check.</p>
+<pre><code class="language-python">import importlib
+
+for name in [&quot;numpy&quot;, &quot;pandas&quot;, &quot;matplotlib&quot;, &quot;scipy&quot;, &quot;xarray&quot;, &quot;netCDF4&quot;, &quot;cartopy&quot;, &quot;pyrsig&quot;, &quot;atmoz&quot;]:
+    try:
+        mod = importlib.import_module(name)
+        print(f&quot;OK       {name:12s} {getattr(mod, '__version__', '(no version)')}&quot;)
+    except Exception as err:
+        print(f&quot;MISSING  {name:12s} {type(err).__name__}: {err}&quot;)
+</code></pre>
+<p>Every line should start with <code>OK</code>. A missing <code>cartopy</code> or <code>atmoz</code> will not stop you in Sessions 1 and 2.</p>
+<h3>Local install troubleshooting</h3>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>What to try</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>conda</code> or <code>uv</code> is "not found"</td>
+<td>Close and reopen the terminal. With Miniconda on Windows, use <strong>Anaconda Prompt</strong>, not regular Command Prompt.</td>
+</tr>
+<tr>
+<td><code>python --version</code> shows 3.13 or newer, or 3.10 or older</td>
+<td>Make the environment with 3.12 explicitly (<code>conda create -n marama python=3.12</code>, or <code>uv venv --python 3.12</code>). With plain <code>venv</code>, install Python 3.12 from python.org and use its full name, such as <code>py -3.12 -m venv marama-env</code> on Windows or <code>python3.12 -m venv marama-env</code> on Mac/Linux.</td>
+</tr>
+<tr>
+<td><code>python</code> is "not found" (Windows)</td>
+<td>Reinstall and tick <strong>Add python.exe to PATH</strong>, or try <code>py</code> instead of <code>python</code>.</td>
+</tr>
+<tr>
+<td><code>pip install git+https://...</code> fails with "git not found"</td>
+<td>Install Git (<a href="https://git-scm.com/downloads">git-scm.com</a>), or in a conda environment run <code>conda install git</code>.</td>
+</tr>
+<tr>
+<td><code>cartopy</code> fails to install</td>
+<td>Use Method 1 (Miniconda). Cartopy is the most common failure with pip.</td>
+</tr>
+<tr>
+<td><code>ModuleNotFoundError</code> for a package you installed</td>
+<td>You are probably in a different environment. Activate the course environment, then run <code>jupyter lab</code> from the same window.</td>
+</tr>
+<tr>
+<td>Packages install but the notebook cannot see them</td>
+<td>Start <code>jupyter lab</code> from the activated environment, not a different Python.</td>
+</tr>
+<tr>
+<td>Your work computer will not let you install software</td>
+<td>Use Colab. It needs only a browser.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>To verify:</strong> the local install steps were written from the official documentation. They have not been run on Windows, Mac and Linux, nor has the check above been run against a fresh install of each.</p>
+</body></html>
