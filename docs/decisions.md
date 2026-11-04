@@ -38,3 +38,20 @@ Based on a review of *Teaching Tech Together* (Wilson), Carpentries guidance, an
 8. Make the career boost visible: take-home episode-report notebook, manager one-pager, supervisor note, between-session 15-minute micro-tasks. **[BUILD]**
 - **Language:** avoid "just", "easy", "simple" in learner-facing text.
 - **Lesson-plan follow-ups (not yet applied):** 15-minute setup block in Session 1; Excel/R translation table; stretch task per exercise; episode-report deliverable in Session 4; micro-tasks; decide whether the three-year design value is a core outcome or a stretch.
+
+## Round 6 (2026-11-04): Notebook exercise design (from the user's review of the V3 prototype)
+- **Attendees write real code.** Fill-in-a-token blanks (`sep="___"`) are not enough. "Write it" cells ask for whole lines, loops and tables, with scaffolding that fades as the notebook goes on (first exercises give most of the line, later ones give only the goal).
+- **Checks look at results, not text.** `check()` examines what the attendee's code produced (shapes, values, line counts), so many different correct answers pass, and no answer is visible in the cell.
+- **Predictions must be reasoned, not guessed numbers.** Use yes/no or multiple-choice calls, locked in before the code runs. Dropped: guessing counts such as the number of missing values (the attendee now *writes the code that counts them*).
+- **Helper plumbing is not in the notebook.** `check`, `lock`, `reveal` and `scorecard` live in `marama_helpers.py` next to the notebook; the notebook has one import line. On Colab the file must be uploaded alongside the data (public hosting is out of scope for now).
+- **Note:** this adds more writing than the Session 1 "reading first" stance. The balance between reading and writing needs to be settled in the lesson plan.
+
+## Round 7 (2026-11-04): Rebuilt PM2.5 notebook for a live room of 30 plus 150 virtual
+- **Not a Session 1 notebook.** Likely Session 2 or later (which session is still to be settled). Staffing: the instructor plus two student helpers.
+- **Three self-contained blocks** (A: clean table, B: plot it, C: regulatory question). Blocks B and C open with a **checkpoint cell** (`load_clean_table`) so anyone who is stuck or arrives late can join cleanly.
+- **Payoff first.** Opens with the alarming June plot and a locked-in yes/no prediction that is resolved at the end of Block C.
+- **Fewer, better-faded writing exercises.** 14 write cells (was 18): worked example, then a similar write. Three optional ⭐ stretch cells.
+- **Self-service for a high attendee-to-helper ratio:** tiered hints, checkpoints, and a chat convention (✅ finished a block, ❓ stuck or used a checkpoint).
+- **Virtual-friendly:** "neighbor" prompts also say what to do in chat; four prompts are marked as live polls.
+- **Reading AI-written code:** an exercise where an AI-written completeness rule (`> 18`) is tested against ours (`>= 18`).
+- **Fewer colors:** blue (goal, why), orange (write, stretch), purple (discuss, poll), red (watch out).

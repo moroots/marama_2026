@@ -1,0 +1,80 @@
+"""marama_helpers.py: helpers for the MARAMA tutorial notebooks.
+
+Keep this file in the same folder as the notebook. It checks your work without showing you the answer,
+runs the predict-then-reveal routine, and can load a ready-made clean table if you get stuck.
+"""
+import hashlib
+import numpy as np
+import pandas as pd
+
+_KEY = {"sep": "cbe5cfdf7c21", "sep_read": "59e19706d51d", "clean": "bcd6d8cc5bd5", "datetime": "a938adc37b86", "numeric": "661aa146449a", "stretch_a": "2bbe7750e548", "sites": "cad90b433739", "loop": "2c624232cdd2", "hourly": "0bf6e2b11690", "labels": "3cbc87c7681f", "june": "6827d8c699db", "stretch_b": "4723cfec8520", "ai_diff": "d4735e3a265e", "naaqs24": "9f14025af006", "exceed": "5feceb66ffc8", "p98": "a86d4cb8b7e0", "bar": "2c624232cdd2", "annual": "19581e27de7c", "annual_top": "e0b04046fbfb"}
+_HINTS = {"sep": ["Look at the first line again. What sits between the column names?", "It is not a comma, a tab or a space. It is on the same key as the backslash."], "sep_read": ["pandas is still splitting on the wrong character, so you get the wrong number of columns. Check your sep=."], "clean": ["Row 0 should be a real reading and the footer should be gone. Look at df.head(2) and df.tail(2).", "Both junk rows have to go: the second header line at the top and the footer at the bottom. One slice can do both.", "Did you keep Date and Start Time as text with dtype=? Compare with the worked example above."], "datetime": ["pandas could not parse it, or parsed it wrong. Compare your format to the glued text, character by character.", "Every piece of the text needs a code from the table, and the colon is typed as a colon."], "numeric": ["Sample Value should be numbers, with blanks as NaN. to_numeric() has an errors= option for values that are not numbers.", "You want anything that is not a number to become NaN. Then count the NaNs with .isna().sum()."], "stretch_a": ["Group by Site ID, then count the missing readings (isna().sum()) inside each group. Then find the largest."], "sites": ["You want each Site ID exactly once. Try a pandas method whose name means 'one of a kind'."], "loop": ["The plot should have one line per site. Is your loop plotting every site, or only one?"], "hourly": ["For the hourly mean, group by the full timestamp column itself, then take the mean of Sample Value.", "Compare with the daily mean in the worked example above. What do you group by instead of the date?"], "labels": ["An unlabeled axis is the most common mistake in air quality charts. Give the y-axis a label with units, and the plot a title."], "june": ["The plot is not zoomed to June. set_xlim() takes two timestamps.", "The end is the first day AFTER the month you want."], "stretch_b": ["Find the row of hourly_mean with the largest Sample Value. idxmax() gives you its position."], "ai_diff": ["The two rules only disagree for days that sit exactly on the boundary. How would you count the days where the two answers differ?"], "naaqs24": ["It is a whole number between 30 and 40, in µg/m³.", "Look for the primary 24-hour PM2.5 standard in the EPA NAAQS table."], "exceed": ["Keep the rows of daily_valid where daily_mean is greater than your standard, then count them."], "p98": ["quantile() takes a fraction of 1, not a percent. For each site, take the quantile of its daily means, then look at the highest one.", "Compare with the named aggregation in the worked example above."], "bar": ["There should be one bar per site. Did you plot every row of site_summary?"], "annual": ["It is a single-digit number, lower than the 24-hour one.", "Look for the primary annual PM2.5 standard in the EPA NAAQS table."], "annual_top": ["The annual mean is the average of each site's valid daily means. Group by Site ID, take the mean of daily_mean, and look at the highest."]}
+_tries, _locked, _score = {}, {}, {}
+
+
+def _norm(v):
+    if isinstance(v, bool):
+        return str(v)
+    if isinstance(v, (int, float, np.integer, np.floating)):
+        return f"{float(v):g}"
+    return str(v).strip()
+
+
+def _h(v):
+    return hashlib.sha256(_norm(v).encode()).hexdigest()[:12]
+
+
+def check(name, value):
+    """Is your result right? Wrong results get a nudge, never the answer."""
+    try:
+        good = _h(value) == _KEY[name]
+    except Exception:
+        good = False
+    if good:
+        print("✅ Correct.")
+        return
+    n = _tries.get(name, 0)
+    _tries[name] = n + 1
+    hints = _HINTS[name]
+    print("🔁 Not yet.", hints[min(n, len(hints) - 1)])
+
+
+def lock(name, choice):
+    """Commit to a prediction BEFORE you see the result."""
+    if choice is None:
+        print("✍️ Type your prediction on the line above (replace None), then run this cell again.")
+        return
+    _locked[name] = choice
+    print(f"🔒 Locked in: {choice!r}. Now do the work and see what actually happens.")
+
+
+def reveal(name, actual):
+    """After the real code has run: compare it with the prediction you locked in."""
+    if name not in _locked:
+        print("🔒 There is no locked-in prediction. Go back, make one, and lock it first. That is the whole point.")
+        return
+    choice = _locked[name]
+    print(f"   Your prediction: {choice!r}     What happened: {actual!r}")
+    _score[name] = choice == actual
+    print("   You called it." if choice == actual else "   Different from your prediction. What did you expect to see, and why?")
+
+
+def scorecard():
+    """How did your predictions go?"""
+    if not _score:
+        print("No predictions yet.")
+        return
+    print(f"You called {sum(_score.values())} of {len(_score)} predictions.")
+
+
+def load_clean_table(path_to_file):
+    """A ready-made clean table, for when you are stuck or arrived late. No shame: this is what it is for.
+
+    It does what Block A builds: reads the file, drops the two junk rows, builds Datetime, makes Sample Value numeric.
+    """
+    df = pd.read_csv(path_to_file, sep="|", header=[0], low_memory=False,
+                     dtype={"Date": str, "Start Time": str})[1:-1]
+    df["Datetime"] = pd.to_datetime(df["Date"] + df["Start Time"], format="%Y%m%d%H:%M")
+    df["Sample Value"] = pd.to_numeric(df["Sample Value"], errors="coerce")
+    print(f"📦 Loaded the clean table: {df.shape[0]:,} rows. You can continue from here.")
+    return df
