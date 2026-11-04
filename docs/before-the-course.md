@@ -1,93 +1,292 @@
 # Before the Course
 
 **MARAMA Python Tutorial Series, 2026**
-*Python for air quality data: four 90-minute sessions*
+*Four 90-minute sessions. You leave with analysis you can show your supervisor.*
 
-> **Draft.** Items marked **[TBD]** are waiting on details from the instructor (Dr. Maurice Roots). Everything else was checked against the official pages linked below.
+> **Draft v2.** Items marked **[TBD]** wait on details from the instructor (Dr. Maurice Roots). Items marked **[BUILD]** are things the course team still has to produce before this guide is sent. The design rationale is in `docs/decisions.md` (Round 5).
 
-This guide has two parts. **Part A is for attendees**: what to do before Session 1. **Part B is for MARAMA organizers**: what to send, and when.
+This guide has three parts.
+- **Part A is for attendees.** Fifteen minutes of preparation, then everything you might want to look up.
+- **Part B is for MARAMA organizers:** what to send, when, and what to arrange.
+- **Part C is a short note you can hand to your supervisor.**
+
+The optional local Python install is in the **Appendix**. You do not need it to take the course.
 
 ---
 
 # Part A. For attendees
 
-## A1. The short version
+## A1. What you will be able to do
 
-Do these five things before Session 1. They take about 20 minutes in total.
+You already know how to think about air quality data. This course gives you a tool that does the repetitive part for you, and lets you check the work of others, including AI.
 
-1. Sign in to a **Google account** (a personal one is fine).
-2. Open the Colab practice page and **run one cell** (section A4).
-3. *Optional but recommended:* install Python on your own computer as a backup (section A5).
-4. Skim the one-page "what to expect" (section A3).
-5. Bring a **laptop, charger and a mouse if you like one**. A phone or tablet will not work for the hands-on parts.
+By the end of Session 4 you will be able to:
 
-If step 2 works, you are ready. Everything else is optional.
+1. **Compute a monitor's ozone design value yourself**, step by step, and explain why it moves from year to year. *(Sessions 1 and 2)*
+2. **Put TEMPO satellite NO₂ on a map next to ground monitors** for a real episode, June 2025. *(Session 3)*
+3. **Re-run a whole analysis with one command** when new data arrives, instead of redoing it by hand. *(Session 4)*
+4. **Read a Python script, including one an AI assistant wrote, and say what it does, what it will output, and whether it is right.** *(every session)*
 
-## A2. What the course is, and who it is for
+**[Instructor: confirm these four against `docs/lesson-plan.md` before sending. Outcome 1 includes the three-year design value, which the plan currently lists as a stretch.]**
 
-- **Four sessions, 90 minutes each.** About 30 minutes of instruction, 30 minutes of hands-on work, and 30 minutes of discussion and questions.
-- **Live, with some people joining virtually.** Helpers are available during hands-on time. Virtual attendees can ask for help in chat.
-- **The sessions:**
-  1. Overview of Python and simple statistics
-  2. Data analysis techniques and simple plotting
-  3. Python tools for atmospheric science
-  4. Analysis workflows and pipelines
-- **Who it is for.** Air quality staff and managers who are comfortable with numbers and may use Excel or R, but who are **not expected to know Python**. You do not need to have written any code before.
-- **The main skill we teach is reading Python.** Today a lot of code is written with AI assistants. The most useful skill is looking at a script and telling what it does, what it will produce, and whether it is right. You will practice reading, predicting, running and changing code before you write much of your own.
+### What you take home
+- A notebook that analyzes real ozone data, built by you, that you can show your supervisor.
+- A short "episode report" notebook. You pick a pollution episode, and the notebook pulls the data, maps it and summarizes it. **[BUILD: confirm this deliverable in the lesson plan.]**
+- A first draft of automating **one task from your own job** (see A6).
+- A one-page cheat sheet and the solutions to every exercise.
 
-### What you should already know
-- Basic statistics: mean, median, percentiles, standard deviation.
-- What a time series and a data table are.
-- A rough sense of ozone and the 8-hour standard helps for Session 2, but we explain it.
+## A2. Your 15-minute preparation
 
-You do **not** need to know Python, programming, the command line, or Git.
+Three things. Do them in this order. Each one is short.
 
-## A3. What to expect in a session
+| Step | Time | What |
+|---|---|---|
+| 1 | 5 min | **Open Colab and run one cell** (A4). If this works, your setup is done. |
+| 2 | 5 min | **Try the read-and-predict warm-up** (A5). It shows you the main skill we teach. |
+| 3 | 5 min | **Tell us about one real task** from your job that you would like to speed up (A6). |
 
-| Time | What happens |
+That is all that is required. Everything else in this guide is for reference, or optional.
+
+## A3. Pick your path
+
+You do not all start in the same place. Choose the row that describes you. You can change your mind at any time.
+
+| If you say... | Your path |
 |---|---|
-| About 30 min | **Live coding.** The instructor walks through examples on screen. You follow along, or just watch. |
-| About 30 min | **Hands-on.** You work through a short exercise in your notebook. Helpers circulate. |
-| About 30 min | **Discussion and questions.** Interrupting is welcome. |
+| **"I've never written code."** | You are who the course is built for. Do steps 1 to 3 above. Skip the rest. In class, use the cut-down exercises and ask the helpers freely. |
+| **"I use Excel or R."** | You already know the ideas: columns, filters, group-by, pivot tables, plots. The work is vocabulary. Session 1 includes an Excel/R-to-Python translation table. Preview it with [10 minutes to pandas](https://pandas.pydata.org/docs/user_guide/10min.html). |
+| **"I already write some Python."** | Every exercise has a stretch task for you. Bring a harder real problem (A6). Please try the warm-up, because the course is about reading code carefully, which even experienced coders often skip. |
 
-- Notebooks are **Jupyter notebooks**: documents that mix text and code cells. You press **Shift+Enter** to run a cell.
-- Data is **small and pre-packaged**. You will not need accounts, API keys or big downloads during class.
-- **Solutions are shared after each session**, so you can fall behind in class and catch up later.
-- It is fine to get stuck. Getting stuck on purpose, then reading the error message, is part of the plan.
+## A4. Step 1: Open Colab and run one cell
 
-## A4. Primary route: Google Colab (no installation)
+**Colab** is a free Google service that runs Python notebooks in your browser. We use it for all four sessions. Nothing to install. It works the same on Windows, Mac and Linux.
 
-**Colab** is a free service from Google that runs Python notebooks in your web browser. We use it for all four sessions because it needs nothing installed and works the same on Windows, Mac and Linux.
+You need a Google account (a personal one is fine), a current browser, and an internet connection.
 
-**You need:** a Google account, a current browser (Chrome, Edge, Firefox or Safari), and an internet connection.
-
-**Check it works:**
 1. Go to [colab.research.google.com](https://colab.research.google.com) and sign in.
 2. Choose **File → New notebook**.
 3. In the first cell, type `print("Hello, MARAMA")` and press **Shift+Enter**.
-4. You should see `Hello, MARAMA` appear under the cell.
-5. In a new cell, run the next line. It confirms that the libraries we use in class are present.
+4. `Hello, MARAMA` should appear under the cell.
+5. In a new cell, run this and check that you see three version numbers:
 
 ```python
 import numpy, pandas, matplotlib
 print(numpy.__version__, pandas.__version__, matplotlib.__version__)
 ```
 
-If you see three version numbers, you are ready.
+If you see them, **you are done with setup.**
 
-**Things to know about Colab:**
-- Each session you open starts with a **fresh computer**. Anything you installed or downloaded disappears when the session ends. Our notebooks have a first "setup" cell that reinstalls what they need. Run it every time.
-- Colab can disconnect after a period of inactivity. If it does, choose **Runtime → Run all**, or re-run the setup cell and carry on.
-- Save your own copy with **File → Save a copy in Drive** so your edits are kept.
-- **If your organization blocks Google sign-in or Colab,** use the local install in section A5 and tell the organizer in advance.
+> **[BUILD] First win.** By the time Session 1 arrives, you will get a setup notebook by email that ends with a plot of real monitor ozone data. Run it, and you have already analyzed real data, before we start. It needs a small bundled data file, so it depends on where the notebooks are hosted.
 
-**Notebook links.** You will receive the notebook links by email before Session 1. **[TBD: instructor to confirm when and how.]**
+**Four things to know about Colab:**
+- Each time you open a notebook, you get a **fresh computer**. Anything you installed disappears when the session ends. Our notebooks start with a setup cell that reinstalls what they need. Run it first, every time.
+- Colab can disconnect when idle. If it does, choose **Runtime → Run all**, or re-run the setup cell.
+- Use **File → Save a copy in Drive** so your edits are kept.
+- **If your organization blocks Google sign-in or Colab,** tell us now (A9). We will help you with the local install in the Appendix, or with a partner.
 
-**Optional first look.** Google's own [Overview of Colaboratory Features](https://colab.research.google.com/notebooks/basic_features_overview.ipynb) is a short notebook that shows how cells, text, and running code work.
+## A5. Step 2: Read and predict (5 minutes)
 
-## A5. Backup route: run Python on your own computer
+The main skill in this course is **reading** Python. Code is increasingly written by AI assistants. The people who benefit most are the ones who can look at a script and tell whether it is right.
 
-Do this if you want to work offline, if Colab is blocked at your organization, or if you want to keep using Python after the course. **It is optional.** Pick **one** of the three methods below. If you are unsure, use **Method 1 (Miniconda)**.
+Here is the method we use all the time: **read → predict → run → change → check.**
+
+**Read this code.** The numbers are made-up hourly ozone readings, in parts per billion. Don't run it yet.
+
+```python
+ozone_ppb = [38, 52, 61, 74, 69, 45]
+threshold_ppb = 60
+
+above = [x for x in ozone_ppb if x > threshold_ppb]
+
+print(len(above), "readings above the threshold")
+print("highest:", max(ozone_ppb))
+print("average:", sum(ozone_ppb) / len(ozone_ppb))
+```
+
+**Predict.** Write down, on paper or in your head, what the three lines of output will be. A guess is fine. Being wrong is useful, because it shows you where your picture of the code differs from what the computer does.
+
+**Run it** in a Colab cell. Compare with your prediction.
+
+**Change it.** Before you run, predict what happens if you set `threshold_ppb = 70`. Then try it.
+
+**Check it. Spot the bug.** An AI assistant wrote this line to compute the average:
+
+```python
+print("average:", sum(ozone_ppb) / 5)
+```
+
+It runs without any error. Is the number right? How would you find out? (Answer below.)
+
+<details>
+<summary><b>Answers (open after you have tried)</b></summary>
+
+- **Output:** `3 readings above the threshold`, then `highest: 74`, then `average: 56.5`. The readings above 60 are 61, 74 and 69.
+- **With a threshold of 70:** only the 74 is above it, so you get `1 readings above the threshold`. (The grammar is off. That is a small thing you could fix. How?)
+- **The bug:** the list has **six** values, but the code divides by `5`. It prints `67.8`, not `56.5`. It looks plausible, runs without an error, and is wrong. Hard-coded numbers are a common failure in generated code. Checking against a hand calculation (339 ÷ 6 = 56.5) or against `len()` is the fix.
+
+If you got most of it, good. If you did not, you are exactly where the course starts.
+</details>
+
+## A6. Step 3: Bring one real task
+
+Adults learn fastest from their own problems. Before Session 1, think of **one thing you do repeatedly** that you wish were faster or less error-prone. Some examples from air quality work:
+
+- Pulling monitor data and building the same summary table every month.
+- Checking which monitors exceeded a level, and by how much.
+- Making the same plot for a report again and again.
+- Comparing this year's season with the last five.
+- Taking the output of a model run and checking it against monitors.
+
+We will ask you for it on the registration form or by email **[TBD: delivery]**. One sentence is plenty: *"Every week I ___ in Excel, and it takes ___."* We will use these (anonymously) for examples and for the discussion time, and in Session 4 you will start automating your own.
+
+**Please do not bring sensitive or confidential data.** Describe the task. We will practice on public data such as AirNow and AQS, and you can apply the same steps to your own files later at work.
+
+## A7. What a session looks like
+
+| Time | What happens |
+|---|---|
+| About 30 min | **Live coding.** The instructor writes code on screen, makes mistakes, and fixes them. You follow along, or watch and type later. Both are fine. We stop often and ask you to predict what comes next. |
+| About 30 min | **Hands-on.** You work on a short exercise in your own notebook. Helpers move around the room and watch the chat. Every exercise has a smaller starting version and a stretch version. |
+| About 30 min | **Discussion and questions.** Interrupting is welcome. This is where your real-world tasks come in. |
+
+- Notebooks are **Jupyter notebooks**: documents that mix text and code cells. **Shift+Enter** runs a cell.
+- Data is **small and pre-packaged**. You do not need accounts, API keys or big downloads.
+- **Solutions are shared after each session**, so you can fall behind in class and catch up later.
+- **Setup help is built in.** The first 15 minutes of Session 1 are for getting everyone working, with helpers beside you. Do the preparation anyway, because it makes this faster.
+- It is fine to get stuck. Reading an error message is part of the plan.
+- Use a sticky note, or a colored flag in the chat, if you need help. We will explain the signal at the start. You never have to interrupt to ask.
+
+## A8. Between sessions
+
+Learning sticks when it is spread out. Between sessions, you get a **15-minute micro-task**:
+
+- **After Session 1:** change one thing in an example and predict the result.
+- **After Session 2:** run the same analysis on a different monitor.
+- **After Session 3:** swap in a different pollutant or date.
+- **After Session 4:** apply the pipeline pattern to your own task from A6.
+
+These are optional and short. **[TBD: weekly gap between sessions; if the sessions are on consecutive days, this section changes.]** **[BUILD: write the four micro-tasks with the session notebooks.]**
+
+## A9. Logistics
+
+| | |
+|---|---|
+| **Dates and times** | **[TBD: Session 1–4 dates, start time and time zone]** |
+| **Location (in person)** | **[TBD]** |
+| **Virtual link** | **[TBD]** |
+| **Contact for help before the course** | **[TBD: name, email]** |
+| **Optional drop-in setup clinic** | **[TBD: date and time, virtual, before Session 1]** |
+| **During class** | Ask a helper in the room, or use the chat if you are virtual. |
+
+**What to bring:** a laptop and charger. A second screen helps, so you can see the instructor and your notebook together, but you do not need one.
+
+**Before each session** you will get an email with that session's notebook link. Open it and run the first cell to confirm it loads. **After each session**, solutions are shared **[TBD: where and how]**.
+
+**Notebook links.** You will receive these by email before Session 1. **[TBD: when.]**
+
+## A10. Resources
+
+Optional. Don't try to do all of this.
+
+### If you want a head start (each is short)
+| For | Resource | Time |
+|---|---|---|
+| Before Session 1 | Google's [Overview of Colaboratory Features](https://colab.research.google.com/notebooks/basic_features_overview.ipynb): how cells and notebooks work | 10 min |
+| Before Session 2 | [10 minutes to pandas](https://pandas.pydata.org/docs/user_guide/10min.html): the data-table tool we use | 10 min |
+| Before Session 2 | [Python Pandas Tutorial (Part 1)](https://www.youtube.com/watch?v=ZyhVh-qRZPA) by Corey Schafer (video) | About 30 min |
+| Before Session 3 | [xarray](https://xarray.dev) and [Cartopy](https://scitools.org.uk/cartopy/docs/latest/) docs. Browse the gallery only, to see what is possible | 10 min |
+
+### After the course, if you want to go deeper
+- [Programming with Python: Gapminder](https://swcarpentry.github.io/python-novice-gapminder/) (Software Carpentry): careful beginner lessons with exercises.
+- [The Python Tutorial](https://docs.python.org/3/tutorial/index.html) (python.org): the official reference. Sections 3 to 5 cover most of what you will use.
+- Long beginner videos on YouTube, if you prefer watching: freeCodeCamp's [Learn Python – Full Course for Beginners](https://www.youtube.com/watch?v=rfscVS0vtbw) and [Python for Beginners – Full Course](https://www.youtube.com/watch?v=eWRfhZUzrAc) (each about 4.5 hours). These are general Python, not air quality, so they work better after the course than before it.
+
+*Links checked on 2026-11-04.*
+
+## A11. If something goes wrong with Colab
+
+| Problem | What to try |
+|---|---|
+| Colab shows "Session crashed" or disconnected | **Runtime → Restart session**, then re-run the setup cell. |
+| A cell says `ModuleNotFoundError` | Run the notebook's first (setup) cell, then try again. |
+| You cannot sign in to Google, or Colab is blocked at work | Tell us (A9). Use a personal computer, or the Appendix, or sit with a neighbor for the first session. |
+| Your work computer will not open Colab | Same as above. A personal device works. |
+| Nothing here helps | Email the contact in A9 with a screenshot. We would rather hear from you now than see you stuck in Session 1. |
+
+---
+
+# Part B. For MARAMA organizers
+
+## B1. What to send, and when
+
+| When | What | To whom |
+|---|---|---|
+| About 3 weeks before Session 1 | Part A of this guide, the dates, times and links, and the registration form (B4) | All registrants |
+| About 2 weeks before | Part C (the supervisor note), as a separate short message | Registrants, to forward |
+| About 1 week before | Reminder: "Do the 15-minute preparation now." Include the drop-in setup clinic details and the help contact | All registrants |
+| 1 to 2 days before | Session 1 notebook link and the first-win setup notebook | All registrants |
+| After each session | Solutions, the next notebook, and the micro-task | All registrants |
+
+**[TBD: confirm timing and delivery channel.]**
+
+## B2. What the instructor needs from you
+
+- **Registration list** with emails, an in-person or virtual flag, and answers to the form questions in B4.
+- **A room** with reliable Wi-Fi sized for the whole group using it at once.
+- **Power strips.** Laptops will be open for 90 minutes.
+- **A projector or large display.** For virtual attendees, a meeting platform with screen sharing and chat. **[TBD]**
+- **Two helpers** present during the hands-on blocks. They do the A4 check and the A5 warm-up first, so they know what attendees will see.
+- **A contact person** for setup questions before the course. **[TBD]**
+- **15 minutes at the start of Session 1 for setup help.** The first session's agenda should show it. The people who struggle most with installation are also the least likely to come to an optional help session, so setup help has to be part of the class itself.
+- **An optional drop-in clinic** the week before. **[TBD]** Offer it, but don't depend on it.
+
+## B3. Expected problems, from most to least likely
+
+1. **Work computers that block software.** Colab is the main route for this reason.
+2. **Organizations that block Google sign-in or Colab.** Find these out early with the form.
+3. **Attendees who arrive without doing the preparation.** The 15-minute setup block in Session 1 handles this.
+4. **Shared Wi-Fi limits.** Small bundled data is the mitigation.
+5. **Windows PATH problems** for anyone doing the local install (Appendix).
+
+## B4. Registration form questions
+
+1. Can you sign in to a Google account and open colab.research.google.com on the computer you will bring? (Yes / No / Not sure)
+2. Which sounds most like you? (I have never written code / I use Excel or R / I already write some Python)
+3. Will you attend in person or virtually?
+4. **What is one task you do repeatedly that you wish were faster?** (One sentence. Please don't include confidential details.)
+5. Is there anything we should know to make the sessions work for you?
+
+## B5. To build before sending
+
+- **[BUILD]** Setup notebook that ends with a plot of real ozone data (needs the bundled data).
+- **[BUILD]** The four between-session micro-tasks (A8).
+- **[BUILD]** The one-page cheat sheet and a manager one-pager, "What to ask your analyst, and how to check AI-written code."
+- **[BUILD]** The episode-report notebook as the Session 4 deliverable, after the instructor confirms it.
+- **[TBD]** All dates, times, location, links, contact, and the solutions channel.
+- **To verify:** that the warm-up in A5 runs as described (I ran it locally and the outputs match the answers). Run it once in Colab as well.
+- **To verify:** which Python version Colab runs on the day. Attendees cannot choose it, and `pyrsig` is vetted only on 3.12.
+
+---
+
+# Part C. A note for supervisors
+
+*(Attendees can forward this. Edit freely.)*
+
+**Subject: Why I'd like to attend the MARAMA Python tutorial series**
+
+I'd like to attend four 90-minute sessions run by Dr. Maurice Roots for MARAMA. The course teaches Python for air quality work, aimed at staff who use Excel or R and have not written Python.
+
+It matters for our work because analyses that take hours by hand can be repeated automatically each time data arrives, and because more of the code we receive is now written by AI. The course trains people to read and check that code, not only write it.
+
+By the end I should be able to compute an ozone design value from monitor data, map satellite NO₂ next to ground monitors for a real episode, and rerun an analysis with one command. I will bring back a short episode-report notebook and a first draft of automating one of my own recurring tasks.
+
+Time commitment: four 90-minute sessions **[TBD dates]**, plus about 15 minutes of preparation and a short optional task between sessions. Cost: **[TBD]**.
+
+---
+
+# Appendix. Optional: run Python on your own computer
+
+Do this only if you want to work offline, if Colab is blocked for you, or if you want to keep using Python after the course. **It is not needed for the course.** Pick **one** method. If you are unsure, use **Method 1 (Miniconda)**.
 
 ### What you are installing
 
@@ -102,17 +301,17 @@ Do this if you want to work offline, if Colab is blocked at your organization, o
 | `atmoz` | atmospheric science tools used in Session 3 |
 | `jupyterlab` | the notebook interface |
 
-**Python version: use 3.12.** The course supports **Python 3.11 and 3.12 only**. Python 3.10 and older are deprecated and will not work. Do not use 3.13 or newer. `pyrsig`, the package that downloads EPA data, has only been vetted on **3.12**, so 3.12 is the version we recommend and test. Use 3.11 only if you already have it and cannot change it.
+**Python version: use 3.12.** The course supports **Python 3.11 and 3.12 only**. Python 3.10 and older are deprecated. Do not use 3.13 or newer. `pyrsig`, the package that downloads EPA data, has only been vetted on **3.12**, so that is the version we recommend and test. Use 3.11 only if you already have it and cannot change it.
 
-**Check which Python you have:** run `python --version` (or `python3 --version`). If it shows anything other than 3.11 or 3.12, follow the steps below and they will install 3.12 inside a separate environment. They do not change your existing Python.
+**Check which Python you have:** run `python --version` (or `python3 --version`). If it shows anything other than 3.11 or 3.12, the steps below install 3.12 inside a separate environment. They do not change your existing Python.
 
-> **Windows tip:** after installing, use the program called **Anaconda Prompt** (Method 1) or **PowerShell** (Methods 2 and 3). On Mac and Linux, use **Terminal**.
+> **Windows tip:** after installing, use **Anaconda Prompt** (Method 1) or **PowerShell** (Methods 2 and 3). On Mac and Linux, use **Terminal**.
 
 ### Method 1 (recommended): Miniconda
 
-Miniconda installs Python and a package manager called `conda`. It is the easiest route for map and satellite-data packages because `conda` handles the hard-to-install parts.
+Miniconda installs Python and a package manager called `conda`. It handles the hard-to-install map and satellite-data packages well.
 
-1. Download and install Miniconda for your operating system from the official guide: [Miniconda installation](https://www.anaconda.com/docs/getting-started/miniconda/install/overview). Use the graphical installer unless you are comfortable with a terminal.
+1. Download and install Miniconda from the official guide: [Miniconda installation](https://www.anaconda.com/docs/getting-started/miniconda/install/overview). Use the graphical installer unless you are comfortable with a terminal.
 2. Open **Anaconda Prompt** (Windows) or **Terminal** (Mac/Linux).
 3. Create an environment for the course. An environment is a separate folder of packages, so nothing you do here can break other software.
 
@@ -129,16 +328,9 @@ pip install pyrsig
 pip install git+https://github.com/moroots/atmoz
 ```
 
-   `pyrsig` currently needs `pandas<3`, which is why the version is limited.
-   `git` is included in the first command because the `atmoz` install pulls code from GitHub.
+`pyrsig` currently needs `pandas<3`, which is why the version is limited. `git` is in the first command because the `atmoz` install pulls code from GitHub.
 
-5. Start the notebook interface and test it.
-
-```bash
-jupyter lab
-```
-
-   Your browser opens. Create a new Python notebook and run the check from section A6.
+5. Start the notebook interface with `jupyter lab`. Your browser opens. Create a new Python notebook and run the check in the last section of this appendix.
 
 **Next time:** open Anaconda Prompt or Terminal, run `conda activate marama`, then `jupyter lab`.
 
@@ -146,12 +338,11 @@ Official references: [conda getting started](https://docs.conda.io/projects/cond
 
 ### Method 2: uv
 
-`uv` is a newer, very fast Python tool that installs Python itself and your packages. It works well if you are comfortable with a terminal. Geospatial packages usually install smoothly from wheels, but if `cartopy` fails, use Method 1.
+`uv` is a newer, very fast tool that installs Python and packages. It suits you if you are comfortable with a terminal. If `cartopy` fails to install, use Method 1.
 
-1. Install `uv` using the [official installation page](https://docs.astral.sh/uv/getting-started/installation/).
+1. Install `uv` from the [official installation page](https://docs.astral.sh/uv/getting-started/installation/). Close and reopen your terminal afterward.
    - **Mac / Linux:** `curl -LsSf https://astral.sh/uv/install.sh | sh`
    - **Windows (PowerShell):** `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"`
-   - Close and reopen your terminal afterward.
 2. Create a project folder and environment.
 
 ```bash
@@ -162,7 +353,7 @@ uv venv --python 3.12
 3. Activate it.
    - **Mac / Linux:** `source .venv/bin/activate`
    - **Windows (PowerShell):** `.venv\Scripts\Activate.ps1`
-4. Install the packages. You need **Git** installed for the `atmoz` line ([git-scm.com](https://git-scm.com/downloads)).
+4. Install the packages. You need **Git** for the `atmoz` line ([git-scm.com](https://git-scm.com/downloads)).
 
 ```bash
 uv pip install numpy "pandas<3" matplotlib scipy xarray netcdf4 cartopy pyrsig jupyterlab
@@ -176,13 +367,11 @@ uv pip install git+https://github.com/moroots/atmoz
 This uses only what comes with Python. It is the most universal and the most manual.
 
 1. Install **Python 3.12** from [python.org/downloads](https://www.python.org/downloads/) (choose a 3.12.x release, not the newest version on the front page). **On Windows, tick "Add python.exe to PATH" on the first screen of the installer.** Install [Git](https://git-scm.com/downloads) too.
-2. Open a terminal and create an environment.
+2. Create an environment. On some Mac/Linux systems the command is `python3`.
 
 ```bash
 python -m venv marama-env
 ```
-
-   (On some Mac/Linux systems the command is `python3`.)
 
 3. Activate it.
    - **Mac / Linux:** `source marama-env/bin/activate`
@@ -200,9 +389,9 @@ python -m pip install git+https://github.com/moroots/atmoz
 
 Official reference: [Python Tutorial: Virtual Environments and Packages](https://docs.python.org/3/tutorial/venv.html).
 
-## A6. Check that everything works
+### Check that everything works
 
-Paste this into a notebook cell, in Colab or locally, and run it. In Colab, put `!pip install pyrsig git+https://github.com/moroots/atmoz` on its own line first, then run it, then run the check cell.
+Paste this into a notebook cell and run it. In Colab, first run `!pip install pyrsig git+https://github.com/moroots/atmoz` on its own, then run the check.
 
 ```python
 import importlib
@@ -215,114 +404,19 @@ for name in ["numpy", "pandas", "matplotlib", "scipy", "xarray", "netCDF4", "car
         print(f"MISSING  {name:12s} {type(err).__name__}: {err}")
 ```
 
-Every line should start with `OK`. If something says `MISSING`, see the table below. Note which ones are missing and email the contact in section A9. **A missing `cartopy` or `atmoz` will not stop you in Sessions 1 and 2.**
+Every line should start with `OK`. A missing `cartopy` or `atmoz` will not stop you in Sessions 1 and 2.
 
-## A7. Troubleshooting
+### Local install troubleshooting
 
 | Problem | What to try |
 |---|---|
-| `conda` or `uv` is "not found" | Close and reopen the terminal. On Windows with Miniconda, use **Anaconda Prompt**, not regular Command Prompt. |
-| `python --version` shows 3.13 or newer, or 3.10 or older | Make the environment with 3.12 explicitly (`conda create -n marama python=3.12`, or `uv venv --python 3.12`). With plain `venv`, install Python 3.12 from python.org and run it by its full name, such as `py -3.12 -m venv marama-env` on Windows or `python3.12 -m venv marama-env` on Mac/Linux. |
+| `conda` or `uv` is "not found" | Close and reopen the terminal. With Miniconda on Windows, use **Anaconda Prompt**, not regular Command Prompt. |
+| `python --version` shows 3.13 or newer, or 3.10 or older | Make the environment with 3.12 explicitly (`conda create -n marama python=3.12`, or `uv venv --python 3.12`). With plain `venv`, install Python 3.12 from python.org and use its full name, such as `py -3.12 -m venv marama-env` on Windows or `python3.12 -m venv marama-env` on Mac/Linux. |
 | `python` is "not found" (Windows) | Reinstall and tick **Add python.exe to PATH**, or try `py` instead of `python`. |
-| `pip install git+https://...` fails with "git not found" | Install Git ([git-scm.com](https://git-scm.com/downloads)) or, in a conda environment, run `conda install git`. |
+| `pip install git+https://...` fails with "git not found" | Install Git ([git-scm.com](https://git-scm.com/downloads)), or in a conda environment run `conda install git`. |
 | `cartopy` fails to install | Use Method 1 (Miniconda). Cartopy is the most common failure with pip. |
 | `ModuleNotFoundError` for a package you installed | You are probably in a different environment. Activate the course environment, then run `jupyter lab` from the same window. |
-| Packages install but the notebook cannot see them | Start `jupyter lab` from the activated environment, not from a different Python. |
-| Colab says "Session crashed" or disconnected | **Runtime → Restart session**, then re-run the setup cell. |
-| Work computer will not let you install software | Use Colab. It needs only a browser. |
-| Colab or Google sign-in is blocked | Install locally on a personal computer, or contact the organizer ahead of time. |
+| Packages install but the notebook cannot see them | Start `jupyter lab` from the activated environment, not a different Python. |
+| Your work computer will not let you install software | Use Colab. It needs only a browser. |
 
-## A8. Optional learning resources
-
-None of this is required. Pick one or two items if you want a head start, and ignore the rest.
-
-### Videos (YouTube)
-Checked 2026-11-04: each link opens a live video with the title shown.
-
-| Video | Length | Why watch it |
-|---|---|---|
-| [Learn Python – Full Course for Beginners](https://www.youtube.com/watch?v=rfscVS0vtbw) (freeCodeCamp.org) | About 4.5 hours | Complete beginner introduction. Watch the first hour or so for variables, lists and loops, which is all Session 1 assumes. |
-| [Python for Beginners – Full Course](https://www.youtube.com/watch?v=eWRfhZUzrAc) (freeCodeCamp.org) | About 4.5 hours | An alternative if the first one does not suit you. It reads two programs line by line, which matches our "read first" approach. |
-| [Python Pandas Tutorial (Part 1): Getting Started with Data Analysis](https://www.youtube.com/watch?v=ZyhVh-qRZPA) (Corey Schafer) | About 30 minutes | Good preview for Session 2. He also covers selecting, filtering and grouping data in the following parts of the series, which map onto what Excel and R users already do. |
-
-*[Instructor: add any videos you recommend. I could not verify a Colab intro video or an xarray/cartopy video, so I left those out rather than guess.]*
-
-### Free written guides
-| Resource | Good for |
-|---|---|
-| [Overview of Colaboratory Features](https://colab.research.google.com/notebooks/basic_features_overview.ipynb) | Learning the notebook interface in 10 minutes |
-| [The Python Tutorial](https://docs.python.org/3/tutorial/index.html) (python.org) | The official, authoritative introduction. Sections 3 to 5 are enough. |
-| [Programming with Python: Gapminder](https://swcarpentry.github.io/python-novice-gapminder/) (Software Carpentry) | Slow, careful beginner lessons with exercises |
-| [10 minutes to pandas](https://pandas.pydata.org/docs/user_guide/10min.html) | A short tour of data tables, the main Python tool for Session 2 |
-| [xarray](https://xarray.dev) | Docs for the gridded-data library in Session 3 |
-| [Cartopy documentation](https://scitools.org.uk/cartopy/docs/latest/) | Mapping library for Session 3 |
-
-### If you know R or Excel
-You already know most of the *ideas*. The learning is mostly vocabulary. In Session 1 we show a short translation table (columns, filters, group-by, pivot tables, plots). If you want a head start, the pandas tutorial and Corey Schafer's series above focus on exactly those tasks.
-
-## A9. Logistics
-
-| | |
-|---|---|
-| **Dates and times** | **[TBD: Session 1–4 dates, start time and time zone]** |
-| **Location (in person)** | **[TBD]** |
-| **Virtual link** | **[TBD]** |
-| **Contact for help before the course** | **[TBD: name, email]** |
-| **During class** | Ask a helper in the room, or post in the chat if you are virtual. |
-
-**What to bring:** a laptop and charger. Set your screen so you can see the instructor's screen and your notebook at the same time (a second monitor helps, but is not required).
-
-**Before each session:** you will get an email with that session's notebook link. Open it and run the first cell to confirm everything loads.
-
-**After each session:** solutions and any notebook updates will be shared. **[TBD: where and how.]**
-
----
-
-# Part B. For MARAMA organizers
-
-## B1. What to send, and when
-
-| When | What | To whom |
-|---|---|---|
-| About 3 weeks before Session 1 | Part A of this guide, plus the dates, times, venue and virtual link | All registrants |
-| About 1 week before | Reminder: "Run the Colab check (section A4) now." Include the help contact | All registrants |
-| 1 to 2 days before | Session 1 notebook link and final logistics | All registrants |
-| After each session | Solutions and the next session's notebook link | All registrants |
-
-**[TBD: confirm the exact timing and the delivery channel (email list, event page, or other).]**
-
-## B2. What the instructor needs from you
-
-- **Registration list** with emails, and a way to flag virtual versus in-person attendees.
-- **A room** with reliable Wi-Fi sized for the whole room at once. Everyone is downloading a few small files on a shared network at the same time.
-- **Power strips.** Laptops will be open for 90 minutes.
-- **A projector or large display** and, for virtual attendees, a meeting platform with screen sharing and chat. **[TBD]**
-- **Two helpers** present during the hands-on blocks, ideally with some Python experience. They should do the section A4 check themselves first.
-- **A contact person** for attendees' setup questions before the course. **[TBD]**
-
-## B3. Expected attendee problems, from most to least likely
-
-1. **Work computers that block software installs.** This is why Colab is the primary route and the local install is optional.
-2. **Organizations that block Google sign-in or Colab.** Ask registrants in advance, for example with one line on the registration form, "Can you sign in to Google and open colab.research.google.com from the device you'll bring?"
-3. **Windows PATH and activation problems** in the local install (see section A7).
-4. **Network limits on a shared room Wi-Fi.** The notebooks use small bundled files for this reason.
-5. **People who arrive without doing the check.** Allow about 10 minutes of the first session for catch-up, which the schedule already has in its buffer.
-
-## B4. Suggested pre-course question for the registration form
-
-> 1. Can you sign in to a Google account and open colab.research.google.com on the computer you'll bring? (Yes / No / Not sure)
-> 2. Have you used Python, R, or Excel for data analysis? (Python / R / Excel / None)
-> 3. Will you attend in person or virtually?
-> 4. Is there anything we should know to make the sessions accessible for you?
-
----
-
-## Open items before this guide is sent
-
-- **[TBD]** Dates, times, location, virtual link, contact, and how solutions and notebooks are delivered.
-- **[TBD]** Where the notebook links will be hosted. The Colab links depend on a public location, which is currently out of scope.
-- **To verify:** the local install steps for all three methods were written from the official documentation. I have not run them on Windows, Mac and Linux, or run the section A6 check against a fresh install of each.
-- **To verify:** that `atmoz` installs from GitHub on a clean machine and in Colab. It does not appear on PyPI under that name, so the guide uses `pip install git+https://github.com/moroots/atmoz`, which is what the earlier bootcamp notebooks used.
-- **Decided:** support Python 3.11 and 3.12 only, recommend and test 3.12. `pyrsig` is vetted only on 3.12.
-- **To verify:** which Python version Colab runs on the day. Colab sets its own version and attendees cannot choose it. If it is not 3.11 or 3.12, `pyrsig` may need testing there.
-- **Optional:** add recommended videos from the instructor.
+**To verify:** the local install steps were written from the official documentation. They have not been run on Windows, Mac and Linux, nor has the check above been run against a fresh install of each.

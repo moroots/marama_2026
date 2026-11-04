@@ -25,3 +25,16 @@
 - **Consequence:** Colab must be able to fetch the notebooks and data. The repo currently lives on a private Tailscale host, so a public mirror (or other public hosting) is required. Open decision.
 - **Consequence:** every notebook needs a first "setup" cell that detects Colab, installs missing packages (`pyrsig`, `atmoz`, `cartopy`), and fetches bundled data from a public URL.
 - **Python version:** support 3.11 and 3.12 only (3.10 and older are deprecated). Recommend and test **3.12**; `pyrsig` is vetted only on 3.12. All local-install commands pin 3.12.
+
+## Round 5 (2026-11-04): Teaching design for the "Before the Course" guide
+Based on a review of *Teaching Tech Together* (Wilson), Carpentries guidance, and Knowles (evidence quality is mixed; see the memory note). The user approved all eight changes:
+1. Lead with job-relevant outcomes (design value, TEMPO overlay, one-command rerun, reading AI code), not chores.
+2. Setup notebook should end with a first win: a plot of real ozone data. **[BUILD, needs bundled data]**
+3. Practice the signature skill pre-course: a read-predict-run-change-check warm-up with a planted AI bug.
+4. Three paths: never coded / Excel or R / already writes Python.
+5. Colab-first front page; local installs moved to an appendix; 15 minutes of setup help scheduled at the start of Session 1, plus an optional drop-in clinic.
+6. Replace 4.5-hour generic videos with short, session-tied items; long videos move to "after the course".
+7. Bring one real task (non-confidential); used in discussion time and as the start of the Session 4 automation exercise.
+8. Make the career boost visible: take-home episode-report notebook, manager one-pager, supervisor note, between-session 15-minute micro-tasks. **[BUILD]**
+- **Language:** avoid "just", "easy", "simple" in learner-facing text.
+- **Lesson-plan follow-ups (not yet applied):** 15-minute setup block in Session 1; Excel/R translation table; stretch task per exercise; episode-report deliverable in Session 4; micro-tasks; decide whether the three-year design value is a core outcome or a stretch.
