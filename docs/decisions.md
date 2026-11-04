@@ -19,3 +19,8 @@
 - **pyrsig prototype:** approved and run; AirNow, AQS, and TEMPO L3 all retrieve without credentials (see `research-notes.md`).
 - **AI-assistant mini-segment in Session 1:** keep. Attendees "should know."
 - **Audience lens:** design for what state/local agency staff and managers actually do; see `docs/audience-needs.md`.
+
+## Round 4 (2026-11-04)
+- **Delivery platform: Google Colab.** Primary for all four sessions; local install (conda/`uv`) remains the documented backup. No hosted JupyterHub.
+- **Consequence:** Colab must be able to fetch the notebooks and data. The repo currently lives on a private Tailscale host, so a public mirror (or other public hosting) is required. Open decision.
+- **Consequence:** every notebook needs a first "setup" cell that detects Colab, installs missing packages (`pyrsig`, `atmoz`, `cartopy`), and fetches bundled data from a public URL.
