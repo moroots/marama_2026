@@ -24,3 +24,4 @@
 - **Delivery platform: Google Colab.** Primary for all four sessions; local install (conda/`uv`) remains the documented backup. No hosted JupyterHub.
 - **Consequence:** Colab must be able to fetch the notebooks and data. The repo currently lives on a private Tailscale host, so a public mirror (or other public hosting) is required. Open decision.
 - **Consequence:** every notebook needs a first "setup" cell that detects Colab, installs missing packages (`pyrsig`, `atmoz`, `cartopy`), and fetches bundled data from a public URL.
+- **Python version:** support 3.11 and 3.12 only (3.10 and older are deprecated). Recommend and test **3.12**; `pyrsig` is vetted only on 3.12. All local-install commands pin 3.12.

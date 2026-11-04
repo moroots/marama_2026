@@ -102,7 +102,9 @@ Do this if you want to work offline, if Colab is blocked at your organization, o
 | `atmoz` | atmospheric science tools used in Session 3 |
 | `jupyterlab` | the notebook interface |
 
-Python version: **3.12 is the safest choice.** Several of these packages now need Python 3.11 or newer. Python 3.9 and 3.10 will not work. *[Instructor: confirm the version I tested before sending. I have not tested 3.14 with cartopy.]*
+**Python version: use 3.12.** The course supports **Python 3.11 and 3.12 only**. Python 3.10 and older are deprecated and will not work. Do not use 3.13 or newer. `pyrsig`, the package that downloads EPA data, has only been vetted on **3.12**, so 3.12 is the version we recommend and test. Use 3.11 only if you already have it and cannot change it.
+
+**Check which Python you have:** run `python --version` (or `python3 --version`). If it shows anything other than 3.11 or 3.12, follow the steps below and they will install 3.12 inside a separate environment. They do not change your existing Python.
 
 > **Windows tip:** after installing, use the program called **Anaconda Prompt** (Method 1) or **PowerShell** (Methods 2 and 3). On Mac and Linux, use **Terminal**.
 
@@ -173,7 +175,7 @@ uv pip install git+https://github.com/moroots/atmoz
 
 This uses only what comes with Python. It is the most universal and the most manual.
 
-1. Install Python 3.12 from [python.org/downloads](https://www.python.org/downloads/). **On Windows, tick "Add python.exe to PATH" on the first screen of the installer.** Install [Git](https://git-scm.com/downloads) too.
+1. Install **Python 3.12** from [python.org/downloads](https://www.python.org/downloads/) (choose a 3.12.x release, not the newest version on the front page). **On Windows, tick "Add python.exe to PATH" on the first screen of the installer.** Install [Git](https://git-scm.com/downloads) too.
 2. Open a terminal and create an environment.
 
 ```bash
@@ -220,6 +222,7 @@ Every line should start with `OK`. If something says `MISSING`, see the table be
 | Problem | What to try |
 |---|---|
 | `conda` or `uv` is "not found" | Close and reopen the terminal. On Windows with Miniconda, use **Anaconda Prompt**, not regular Command Prompt. |
+| `python --version` shows 3.13 or newer, or 3.10 or older | Make the environment with 3.12 explicitly (`conda create -n marama python=3.12`, or `uv venv --python 3.12`). With plain `venv`, install Python 3.12 from python.org and run it by its full name, such as `py -3.12 -m venv marama-env` on Windows or `python3.12 -m venv marama-env` on Mac/Linux. |
 | `python` is "not found" (Windows) | Reinstall and tick **Add python.exe to PATH**, or try `py` instead of `python`. |
 | `pip install git+https://...` fails with "git not found" | Install Git ([git-scm.com](https://git-scm.com/downloads)) or, in a conda environment, run `conda install git`. |
 | `cartopy` fails to install | Use Method 1 (Miniconda). Cartopy is the most common failure with pip. |
@@ -320,5 +323,6 @@ You already know most of the *ideas*. The learning is mostly vocabulary. In Sess
 - **[TBD]** Where the notebook links will be hosted. The Colab links depend on a public location, which is currently out of scope.
 - **To verify:** the local install steps for all three methods were written from the official documentation. I have not run them on Windows, Mac and Linux, or run the section A6 check against a fresh install of each.
 - **To verify:** that `atmoz` installs from GitHub on a clean machine and in Colab. It does not appear on PyPI under that name, so the guide uses `pip install git+https://github.com/moroots/atmoz`, which is what the earlier bootcamp notebooks used.
-- **To verify:** the Python version to recommend (the guide says 3.12).
+- **Decided:** support Python 3.11 and 3.12 only, recommend and test 3.12. `pyrsig` is vetted only on 3.12.
+- **To verify:** which Python version Colab runs on the day. Colab sets its own version and attendees cannot choose it. If it is not 3.11 or 3.12, `pyrsig` may need testing there.
 - **Optional:** add recommended videos from the instructor.
