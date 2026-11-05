@@ -9,8 +9,6 @@ Four hands-on sessions for the Mid-Atlantic Regional Air Management Association 
 | 3 | Python Tools for Atmospheric Science | outline |
 | 4 | Analysis Workflows and Pipelines | outline |
 
-See [`docs/outline.md`](docs/outline.md) for the working outline and
-[`docs/source-notes.md`](docs/source-notes.md) for notes on the reusable
-bootcamp material.
+Start with [`docs/before-the-course.pdf`](docs/before-the-course.pdf) ([source](docs/before-the-course.md)): how to get your Python setup ready before Session 1.
 
-> Draft in progress. Nothing here is final until the outline is approved.
+> Draft in progress.
