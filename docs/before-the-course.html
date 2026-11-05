@@ -73,13 +73,11 @@ print(&quot;Python&quot;, sys.version.split()[0])
 print(&quot;✅ Correct version.&quot; if sys.version_info[:2] == (3, 12) else &quot;❌ Wrong version. Repeat step 3 and choose a Runtime Version that ships Python 3.12.&quot;)
 </code></pre>
 <ol start="5">
-<li><strong>Check the packages.</strong> Copy each cell below into Colab, one at a time, and press <strong>Shift+Enter</strong> to run it.</li>
+<li><strong>Check the packages.</strong> Copy this into a <strong>new cell</strong> and press <strong>Shift+Enter</strong> to run it. It checks whether the Python packages for the course are installed:</li>
 </ol>
-<p>This checks that the Python tools for the course are installed.</p>
 <pre><code class="language-python">import importlib
 names = [&quot;numpy&quot;, &quot;pandas&quot;, &quot;geopandas&quot;, &quot;matplotlib&quot;, &quot;scipy&quot;,
- &quot;xarray&quot;, &quot;netCDF4&quot;, &quot;h5py&quot;, &quot;cartopy&quot;, &quot;plotly&quot;]
-
+         &quot;xarray&quot;, &quot;netCDF4&quot;, &quot;h5py&quot;, &quot;cartopy&quot;, &quot;plotly&quot;]
 missing = []
 
 for name in names:
@@ -90,18 +88,24 @@ for name in names:
         missing.append(name)
         print(f&quot;MISSING  {name:12s} {type(err).__name__}&quot;)
 
-if not missing: 
-  print(&quot;\n ✅ Ready. You are set for the course.&quot;)
-else: 
-  for module in missing:
-    print(f&quot;\n Run: !pip install {module}&quot;)
+print()
+if not missing:
+    print(&quot;✅ Ready. You are set for the course.&quot;)
+else:
+    print(&quot;❌ Not ready yet. Missing:&quot;, &quot;, &quot;.join(missing))
+    print()
+    print(&quot;To fix it: copy the line below into a NEW cell, run it, then run this check cell again.&quot;)
+    print()
+    print(&quot;!pip install &quot; + &quot; &quot;.join(missing))
 </code></pre>
+<p><strong>If the last line says ✅ Ready,</strong> you are done.</p>
+<p><strong>If it says ❌ Not ready yet,</strong> it prints a line that starts with <code>!pip install</code>. Copy that whole line into a new cell and run it. Then run the check cell again. The last line should now say ✅ Ready.</p>
 <p><strong>What does <code>!pip install</code> do?</strong></p>
 <ul>
-<li>It downloads and installs a package from the Python Package Index (PyPI).</li>
-<li>The <code>!</code> tells Colab to run it as a computer command, not as Python. Do not change it.</li>
+<li>It downloads and installs packages from the Python Package Index (PyPI).</li>
+<li>The <code>!</code> tells Colab to run it as a computer command, not as Python. Do not remove it.</li>
 </ul>
-<p><strong>What you should see.</strong> A few minutes of scrolling text while it installs (that is normal), then a list of lines starting with <strong><em>Successfully installed...</em></strong>. Red text in the install part is often only a warning. What matters is the last line.</p>
+<p><strong>What you should see while it installs.</strong> A few minutes of scrolling text (that is normal). The output ends with <strong><em>Successfully installed...</em></strong> followed by the package names. Red text in the middle is often only a warning. If Colab shows a <strong>Restart session</strong> button, click it, then run the version check and the package check again.</p>
 <div style="border-left:7px solid #27ae60;background:rgba(39,174,96,.13);padding:6px 18px;margin:14px 0;border-radius:8px;line-height:1.5">
 <p><strong>💡 Colab forgets everything between visits</strong></p>
 <p>Each time you open Colab you get a <strong>fresh computer</strong>, so your installs disappear when the session ends. The Python version may also go back to the default. That is expected. To make this quick every time:</p>
@@ -111,69 +115,95 @@ else:
 <li>Colab can disconnect when idle. If it does, choose <strong>Runtime → Restart session</strong> and run the cells again.</li>
 </ul>
 </div>
+<h3>If something goes wrong in Colab</h3>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>What to try</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The version check says <strong>❌ Wrong version</strong></td>
+<td>Repeat step 3: <strong>Runtime → Change runtime type → Runtime Version → 2026.07 → Save</strong>. Wait for it to connect, then run the version check again.</td>
+</tr>
+<tr>
+<td>The <strong>Runtime Version</strong> dropdown is missing, or 2026.07 is not listed</td>
+<td>Email us a screenshot of the dropdown (address below).</td>
+</tr>
+<tr>
+<td>The package check says <strong>❌ Not ready yet</strong></td>
+<td>Copy the <code>!pip install</code> line it printed into a new cell and run it. Then run the check again.</td>
+</tr>
+<tr>
+<td>The install prints a lot of red text</td>
+<td>Often only warnings. Look at the last lines. If they say <code>Successfully installed</code>, you are fine. If they say <code>ERROR</code>, run the line once more. If it fails again, email us the output.</td>
+</tr>
+<tr>
+<td>Colab shows "Session crashed" or disconnected</td>
+<td><strong>Runtime → Restart session</strong>, then run the version check and the package check again.</td>
+</tr>
+<tr>
+<td>A cell says <code>ModuleNotFoundError</code></td>
+<td>Run the package check and follow what it prints.</td>
+</tr>
+<tr>
+<td>You cannot sign in to Google, or Colab is blocked at work</td>
+<td>Use a personal device, or set up your own computer (next section).</td>
+</tr>
+<tr>
+<td>Nothing here helps</td>
+<td>Email mroots1@umbc.edu with a screenshot. <strong>Please do this before the course,</strong> not during the session.</td>
+</tr>
+</tbody>
+</table>
 <h2 style="background:linear-gradient(90deg,#2f80ed,#56ccf2);color:#fff;padding:9px 18px;border-radius:10px;margin:28px 0 8px;font-size:1.25em">If using your own computer</h2>
 <p>Use this if Colab is blocked for you, if you prefer to work offline, or if you want to keep using Python after the course. Once you finish, your setup stays installed, so you do not repeat it for each session.</p>
-<p>Pick <strong>one</strong> method. If you are unsure, use <strong>Method 1 (Miniconda)</strong>.</p>
-<p><strong>Python version: use 3.12.</strong> The course supports <strong>Python 3.11 and 3.12 only</strong>. Python 3.10 and older are deprecated. Do not use 3.13 or newer. <code>pyrsig</code>, the package that downloads EPA data, has only been vetted on <strong>3.12</strong>, so that is the version we recommend and test. Use 3.11 only if you already have it and cannot change it.</p>
-<p><strong>Check which Python you have:</strong> run <code>python --version</code> (or <code>python3 --version</code>). If it shows anything other than 3.11 or 3.12, the steps below install 3.12 inside a separate environment. They do not change your existing Python.</p>
+<p>Pick <strong>one</strong> method. If you are unsure, use <strong>Method 1 (uv)</strong>.</p>
+<p><strong>Python version: use 3.12.</strong> The course supports <strong>Python 3.11 and 3.12 only</strong>. Python 3.10 and older are deprecated. Do not use 3.13 or newer. <code>pyrsig</code>, the package that downloads EPA and NASA data, has only been vetted on <strong>3.12</strong>, so that is the version we recommend and test. Use 3.11 only if you already have it and cannot change it.</p>
+<p><strong>Check which Python you have:</strong> run <code>python --version</code> (or <code>python3 --version</code>). If it shows anything other than 3.11 or 3.12, the steps below set up 3.12 inside a separate environment. They do not change your existing Python.</p>
 <blockquote>
-<p><strong>Windows tip:</strong> after installing, use <strong>Anaconda Prompt</strong> (Method 1) or <strong>PowerShell</strong> (Methods 2 and 3). On Mac and Linux, use <strong>Terminal</strong>.</p>
+<p><strong>Windows tip:</strong> use <strong>PowerShell</strong>. On Mac and Linux, use <strong>Terminal</strong>.</p>
 </blockquote>
 <p><strong>Words used below.</strong> A <em>terminal</em> is a window where you type commands. An <em>environment</em> is a separate folder of packages, so nothing you do here can break other software on your computer.</p>
-<h3>Method 1 (recommended): Miniconda</h3>
-<p>Miniconda installs Python and a package manager called <code>conda</code>. It handles the map and satellite-data packages well.</p>
-<ol>
-<li>Download and install Miniconda from the official guide: <a href="https://www.anaconda.com/docs/getting-started/miniconda/install/overview">Miniconda installation</a>. Use the graphical installer.</li>
-<li>Open <strong>Anaconda Prompt</strong> (Windows) or <strong>Terminal</strong> (Mac/Linux).</li>
-<li>Create and activate the environment:</li>
-</ol>
-<pre><code class="language-bash">conda create -n marama python=3.12
-conda activate marama
-</code></pre>
-<ol start="4">
-<li>Install the course packages. <code>conda</code> installs the map and geospatial packages most reliably:</li>
-</ol>
-<pre><code class="language-bash">conda install -c conda-forge numpy pandas geopandas matplotlib scipy xarray netcdf4 h5py cartopy plotly jupyterlab
-</code></pre>
-<ol start="5">
-<li>Start the notebook interface with <code>jupyter lab</code>. Your browser opens. Create a new Python notebook and run the check at the end of this section.</li>
-</ol>
-<p><strong>Next time:</strong> open Anaconda Prompt or Terminal, run <code>conda activate marama</code>, then <code>jupyter lab</code>.</p>
-<p>Official references: <a href="https://docs.conda.io/projects/conda/en/stable/user-guide/getting-started.html">conda getting started</a>, <a href="https://docs.conda.io/projects/miniconda">Miniconda installers</a>.</p>
-<h3>Method 2: uv</h3>
-<p><code>uv</code> is a newer, very fast tool that installs Python and packages. It suits you if you are comfortable with a terminal. If <code>cartopy</code> fails to install, use Method 1.</p>
+<h3>Method 1 (recommended): uv</h3>
+<p><code>uv</code> is a newer, very fast tool that installs Python and packages, manages environments and projects, and keeps things fast and clean. It downloads Python 3.12 for you if you do not have it.</p>
 <ol>
 <li>Install <code>uv</code> from the <a href="https://docs.astral.sh/uv/getting-started/installation/">official installation page</a>. Close and reopen your terminal afterward.
    - <strong>Mac / Linux:</strong> <code>curl -LsSf https://astral.sh/uv/install.sh | sh</code>
    - <strong>Windows (PowerShell):</strong> <code>powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"</code></li>
-<li>Create the environment:</li>
+<li>Create the environment. Find a good place on your computer and do the following:</li>
 </ol>
-<pre><code class="language-bash">mkdir marama &amp;&amp; cd marama
+<pre><code class="language-bash">mkdir marama_python_course &amp;&amp; cd marama_python_course
 uv venv --python 3.12
 </code></pre>
 <ol start="3">
 <li>Activate it.
    - <strong>Mac / Linux:</strong> <code>source .venv/bin/activate</code>
-   - <strong>Windows (PowerShell):</strong> <code>.venv\Scripts\Activate.ps1</code></li>
+   - <strong>Windows (PowerShell):</strong> <code>.venv\Scripts\Activate.ps1</code>
+   - If Windows blocks the script, run <code>Set-ExecutionPolicy -Scope Process RemoteSigned</code> and try again.</li>
 <li>Install the course packages:</li>
 </ol>
 <pre><code class="language-bash">uv pip install numpy pandas geopandas matplotlib scipy xarray netCDF4 h5py cartopy plotly jupyterlab
 </code></pre>
 <ol start="5">
-<li>Start the notebook interface: <code>jupyter lab</code></li>
+<li>Start the notebook interface by running <code>jupyter lab</code>. Your browser opens. Create a new Python notebook and run the check at the end of this section.</li>
 </ol>
-<h3>Method 3: Python's standard tools (<code>venv</code> and <code>pip</code>)</h3>
+<p><strong>Next time:</strong> open a terminal, run <code>cd marama_python_course</code>, activate the environment (step 3), then run <code>jupyter lab</code>.</p>
+<h3>Method 2: Python's standard tools (<code>venv</code> and <code>pip</code>)</h3>
 <p>This uses only what comes with Python. It is the most universal and the most manual.</p>
 <ol>
 <li>Install <strong>Python 3.12</strong> from <a href="https://www.python.org/downloads/">python.org/downloads</a> (choose a 3.12.x release, not the newest version on the front page). <strong>On Windows, tick "Add python.exe to PATH" on the first screen of the installer.</strong></li>
 <li>Create the environment. On some Mac/Linux systems the command is <code>python3</code>.</li>
 </ol>
-<pre><code class="language-bash">python -m venv marama-env
+<pre><code class="language-bash">mkdir marama_python_course &amp;&amp; cd marama_python_course
+python3.12 -m venv marama_python_course-env
 </code></pre>
 <ol start="3">
 <li>Activate it.
-   - <strong>Mac / Linux:</strong> <code>source marama-env/bin/activate</code>
-   - <strong>Windows (PowerShell):</strong> <code>marama-env\Scripts\Activate.ps1</code>
+   - <strong>Mac / Linux:</strong> <code>source marama_python_course-env/bin/activate</code>
+   - <strong>Windows (PowerShell):</strong> <code>marama_python_course-env\Scripts\Activate.ps1</code>
    - If Windows blocks the script, run <code>Set-ExecutionPolicy -Scope Process RemoteSigned</code> and try again.</li>
 <li>Install the course packages:</li>
 </ol>
@@ -181,14 +211,18 @@ uv venv --python 3.12
 python -m pip install numpy pandas geopandas matplotlib scipy xarray netCDF4 h5py cartopy plotly jupyterlab
 </code></pre>
 <ol start="5">
-<li>Start the notebook interface: <code>jupyter lab</code></li>
+<li>Start the notebook interface by running <code>jupyter lab</code>. Your browser opens. Create a new Python notebook and run the check below.</li>
 </ol>
+<p><strong>Next time:</strong> open a terminal, run <code>cd marama_python_course</code>, activate the environment (step 3), then run <code>jupyter lab</code>.</p>
 <p>Official reference: <a href="https://docs.python.org/3/tutorial/venv.html">Python Tutorial: Virtual Environments and Packages</a>.</p>
 <h3>Check that everything works</h3>
 <p>Paste this into a notebook cell and run it with <strong>Shift+Enter</strong>:</p>
-<pre><code class="language-python">import importlib
-names = [&quot;numpy&quot;, &quot;pandas&quot;, &quot;geopandas&quot;, &quot;matplotlib&quot;, &quot;scipy&quot;, &quot;xarray&quot;, &quot;netCDF4&quot;, &quot;h5py&quot;, &quot;cartopy&quot;, &quot;plotly&quot;]
+<pre><code class="language-python">import sys, importlib
+print(&quot;Python&quot;, sys.version.split()[0])
+names = [&quot;numpy&quot;, &quot;pandas&quot;, &quot;geopandas&quot;, &quot;matplotlib&quot;, &quot;scipy&quot;,
+         &quot;xarray&quot;, &quot;netCDF4&quot;, &quot;h5py&quot;, &quot;cartopy&quot;, &quot;plotly&quot;]
 missing = []
+
 for name in names:
     try:
         mod = importlib.import_module(name)
@@ -196,10 +230,16 @@ for name in names:
     except Exception as err:
         missing.append(name)
         print(f&quot;MISSING  {name:12s} {type(err).__name__}&quot;)
+
 print()
-print(&quot;✅ Ready. You are set for the course.&quot; if not missing else &quot;❌ Something is missing. See the troubleshooting table below.&quot;)
+if not missing:
+    print(&quot;✅ Ready. You are set for the course.&quot;)
+else:
+    print(&quot;❌ Not ready yet. Missing:&quot;, &quot;, &quot;.join(missing))
+    print(&quot;To fix it, run this in your terminal (with the environment activated), then run this check again:&quot;)
+    print()
+    print(&quot;pip install &quot; + &quot; &quot;.join(missing))
 </code></pre>
-<p>You want <strong>✅ Ready</strong>.</p>
 <h3>Local install troubleshooting</h3>
 <table>
 <thead>
@@ -210,20 +250,20 @@ print(&quot;✅ Ready. You are set for the course.&quot; if not missing else &qu
 </thead>
 <tbody>
 <tr>
-<td><code>conda</code> or <code>uv</code> is "not found"</td>
-<td>Close and reopen the terminal. With Miniconda on Windows, use <strong>Anaconda Prompt</strong>, not regular Command Prompt.</td>
+<td><code>uv</code> is "not found"</td>
+<td>Close and reopen the terminal.</td>
 </tr>
 <tr>
 <td><code>python --version</code> shows 3.13 or newer, or 3.10 or older</td>
-<td>Make the environment with 3.12 explicitly (<code>conda create -n marama python=3.12</code>, or <code>uv venv --python 3.12</code>). With plain <code>venv</code>, install Python 3.12 from python.org and use its full name, such as <code>py -3.12 -m venv marama-env</code> on Windows or <code>python3.12 -m venv marama-env</code> on Mac/Linux.</td>
+<td>With uv, make the environment with 3.12 explicitly: <code>uv venv --python 3.12</code>. With plain <code>venv</code>, install Python 3.12 from python.org and use its full name, such as <code>py -3.12 -m venv marama_python_course-env</code> on Windows or <code>python3.12 -m venv marama_python_course-env</code> on Mac/Linux.</td>
 </tr>
 <tr>
 <td><code>python</code> is "not found" (Windows)</td>
 <td>Reinstall and tick <strong>Add python.exe to PATH</strong>, or try <code>py</code> instead of <code>python</code>.</td>
 </tr>
 <tr>
-<td><code>cartopy</code> fails to install</td>
-<td>Use Method 1 (Miniconda). Cartopy is the most common failure with pip.</td>
+<td>A package fails to install</td>
+<td>Read the last lines of the error and email them to us. Colab is a good fallback in the meantime.</td>
 </tr>
 <tr>
 <td><code>ModuleNotFoundError</code> for a package you installed</td>
