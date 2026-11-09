@@ -4,10 +4,18 @@ data/cache/
 *.nc
 *.hdf
 *.h5
+# ...except the one small NetCDF file the Session 3 notebook opens
+!data/session_3/*.nc
 .venv/
 __pycache__/
 .ipynb_checkpoints/
 .DS_Store
+
+# figures the notebooks write when a student runs them
+Session_*/*.png
+
+# not for attendees: old drafts and the notebooks that contain every answer
+test/
 
 # private working notes and assistant files (never committed)
 notes/
