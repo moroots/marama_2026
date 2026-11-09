@@ -1,9 +1,10 @@
 # data & environments stay out of git
-data/raw/
-data/cache/
-*.nc
-*.hdf
-*.h5
+# data/raw/
+# data/cache/
+# *.nc
+# *.hdf
+# *.h5
+
 # ...except the one small NetCDF file the Session 3 notebook opens
 !data/session_3/*.nc
 .venv/

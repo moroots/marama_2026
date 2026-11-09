@@ -11,6 +11,6 @@ Four hands-on sessions for the Mid-Atlantic Regional Air Management Association 
 
 Start with [`docs/before-the-course.pdf`](docs/before-the-course.pdf) ([source](docs/before-the-course.md)): how to get your Python setup ready before Session 1.
 
-Each session has its own folder. Upload the notebook and the files it needs from `data/` (Session 3 uses `data/session_3/`) to Google Colab, or open the notebook locally.
+Each session has its own folder. The sample data loads with `from marama_2026 import sample_datasets as sd` (for example `sd.load_epa_daily_pm25()`), and downloads from GitHub the first time you use it. On Google Colab, install the package first with `%pip install git+https://github.com/moroots/marama_2026`.
 
 > Draft in progress.
