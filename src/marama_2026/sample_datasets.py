@@ -18,6 +18,9 @@ CACHE_DIR = Path.home() / ".cache" / "marama_2026"
 
 def _fetch(name):
     """Return the local copy of data/<name>, downloading it the first time."""
+    in_repo = Path(__file__).resolve().parents[2] / "data" / name     # only exists in a repo checkout (editable install)
+    if in_repo.is_file():
+        return in_repo
     local = CACHE_DIR / name
     if not local.exists():
         local.parent.mkdir(parents=True, exist_ok=True)
