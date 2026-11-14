@@ -1,10 +1,10 @@
 [project]
 name = "marama-2026"
 version = "0.1.0"
-description = "Add your description here"
+description = "Python Tutorial Course for Air Quality Managers" 
 readme = "README.md"
 authors = [
-    { name = "Maurice Roots", email = "themauriceroots@gmail.com" }
+    { name = "Maurice Roots", email = "mrmoroots@gmail.com" }
 ]
 requires-python = ">=3.12"
 dependencies = [
