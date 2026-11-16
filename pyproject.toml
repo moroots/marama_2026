@@ -14,7 +14,11 @@ dependencies = [
     "pandas>=3.1.1",
     "pyarrow>=26.0.1",
     "scipy>=1.18.1",
-    # Session 3: tools for atmospheric science
+]
+
+[project.optional-dependencies]
+# pip install "marama_2026[session3]"   (or [session4], or [all])
+session3 = [
     "xarray",
     "netcdf4",
     "geopandas",
@@ -24,12 +28,16 @@ dependencies = [
     "act-atmos",
     "pyrsig",
     "atmoz[lidar] @ git+https://github.com/moroots/atmoz",
-    # Session 4: ASOS and HRRR
+]
+session4 = [
     "requests",
+    "cartopy",
     "herbie-data",
     "cfgrib",
     "eccodes",
+    "scikit-learn",
 ]
+all = ["marama-2026[session3,session4]"]
 
 [project.scripts]
 marama-2026 = "marama_2026:main"
