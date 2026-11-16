@@ -44,16 +44,21 @@ print("✅ Correct version." if sys.version_info[:2] == (3, 12) else "❌ Wrong 
 
 ```python
 import importlib
-names = ["numpy", "pandas", "geopandas", "matplotlib", "scipy",
-         "xarray", "netCDF4", "h5py", "cartopy", "plotly"]
+packages = {   # import name: name to give pip
+    "numpy": "numpy", "pandas": "pandas", "geopandas": "geopandas", "matplotlib": "matplotlib",
+    "scipy": "scipy", "xarray": "xarray", "netCDF4": "netCDF4", "h5py": "h5py", "cartopy": "cartopy",
+    "plotly": "plotly", "pyarrow": "pyarrow", "requests": "requests", "metpy": "metpy",
+    "act": "act-atmos", "pyrsig": "pyrsig", "herbie": "herbie-data", "cfgrib": "cfgrib",
+    "atmoz": "atmoz[lidar] @ git+https://github.com/moroots/atmoz",
+}
 missing = []
 
-for name in names:
+for name, pip_name in packages.items():
     try:
         mod = importlib.import_module(name)
         print(f"OK       {name:12s} {getattr(mod, '__version__', '')}")
     except Exception as err:
-        missing.append(name)
+        missing.append(pip_name)
         print(f"MISSING  {name:12s} {type(err).__name__}")
 
 print()
@@ -64,7 +69,7 @@ else:
     print()
     print("To fix it: copy the line below into a NEW cell, run it, then run this check cell again.")
     print()
-    print("!pip install " + " ".join(missing))
+    print("!pip install " + " ".join(f'"{m}"' for m in missing))
 ```
 
 **If the last line says ✅ Ready,** you are done.
@@ -138,7 +143,7 @@ uv venv --python 3.12
 4. Install the course packages:
 
 ```bash
-uv pip install numpy pandas geopandas matplotlib scipy xarray netCDF4 h5py cartopy plotly jupyterlab
+uv pip install numpy pandas geopandas matplotlib scipy xarray netCDF4 h5py cartopy plotly jupyterlab pyarrow requests metpy act-atmos pyrsig herbie-data cfgrib eccodes "atmoz[lidar] @ git+https://github.com/moroots/atmoz"
 ```
 
 5. Start the notebook interface by running `jupyter lab`. Your browser opens. Create a new Python notebook and run the check at the end of this section.
@@ -165,7 +170,7 @@ python3.12 -m venv marama_python_course-env
 
 ```bash
 python -m pip install --upgrade pip
-python -m pip install numpy pandas geopandas matplotlib scipy xarray netCDF4 h5py cartopy plotly jupyterlab
+python -m pip install numpy pandas geopandas matplotlib scipy xarray netCDF4 h5py cartopy plotly jupyterlab pyarrow requests metpy act-atmos pyrsig herbie-data cfgrib eccodes "atmoz[lidar] @ git+https://github.com/moroots/atmoz"
 ```
 
 5. Start the notebook interface by running `jupyter lab`. Your browser opens. Create a new Python notebook and run the check below.

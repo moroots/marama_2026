@@ -112,3 +112,12 @@ def load_tolnet():
     profiles = pd.read_parquet(_fetch("session_3/tolnet_smol2_hartmiller_20250728_31.parquet"))
     profiles.columns = profiles.columns.astype(float)       # the altitude labels were saved as text
     return {day: frame for day, frame in profiles.groupby(profiles.index.strftime("%Y-%m-%d"))}
+
+
+# ---- Session 4: smoke case study --------------------------------------------
+
+def load_asos_smoke():
+    """Hourly airport weather at PHL, BWI, DCA, IAD and RIC, 5 to 11 Jun 2023 (a DataFrame, as IEM serves it)."""
+    import pandas as pd
+
+    return pd.read_parquet(_fetch("session_4/asos_midatlantic_june2023.parquet"))

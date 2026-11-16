@@ -8,11 +8,27 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
+    # Sessions 1 and 2
     "matplotlib>=3.11.2",
     "numpy>=2.5.4",
     "pandas>=3.1.1",
     "pyarrow>=26.0.1",
     "scipy>=1.18.1",
+    # Session 3: tools for atmospheric science
+    "xarray",
+    "netcdf4",
+    "geopandas",
+    "cartopy",
+    "metpy",
+    "plotly",
+    "act-atmos",
+    "pyrsig",
+    "atmoz[lidar] @ git+https://github.com/moroots/atmoz",
+    # Session 4: ASOS and HRRR
+    "requests",
+    "herbie-data",
+    "cfgrib",
+    "eccodes",
 ]
 
 [project.scripts]
