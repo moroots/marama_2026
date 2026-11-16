@@ -121,3 +121,10 @@ def load_asos_smoke():
     import pandas as pd
 
     return pd.read_parquet(_fetch("session_4/asos_midatlantic_june2023.parquet"))
+
+
+def load_boulder_ozone():
+    """Daily 8-hour ozone at Boulder, Colorado, with the ENSO phase of each day (a DataFrame), for Session 4.2."""
+    import pandas as pd
+
+    return pd.read_parquet(_fetch("session_4/Boulder_8hrOzoneDF.parquet"))
